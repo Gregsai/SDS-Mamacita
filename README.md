@@ -30,6 +30,10 @@ SDS Mamacita is a project aimed at assisting Erasmus students studying at Pozna≈
 - Adapt their plan daily towards the Sprint Goal.
 - Hold each other accountable as professionals.
 
+## Communication strategies
+We will communicate using WhatsApp for fast messaging and Discord for videocalls.
+To do real life meetings we will go to the Centrum Library.
+
 ## Installation manual
 
 To be continued
