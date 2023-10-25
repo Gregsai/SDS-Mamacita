@@ -1,0 +1,20 @@
+<p>courses works!</p>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Faculty</th>
+      <th>ECTS</th>
+      <th>Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of courses$ | async">
+      <td><a href="{{ course.link }}">{{ course.name }}</a></td>
+      <td>{{ course.faculty }}</td>
+      <td>{{ course.ects }}</td>
+      <td>{{ course.language }}</td>
+    </tr>
+  </tbody>
+</table>

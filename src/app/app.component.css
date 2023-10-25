@@ -36,3 +36,9 @@ header{
 #right-part a:hover{
     text-decoration:underline;
 }
+
+
+main{
+    display: flex;
+    justify-content: center;
+}
