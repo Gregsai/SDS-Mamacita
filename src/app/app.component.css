@@ -1,0 +1,38 @@
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:grey;
+    width: 100%;
+}
+
+#left-part{
+    display: flex;
+    align-items: center;
+}
+
+#left-part p{
+    margin: 0px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#left-part img{
+    width: 50px;
+    margin: 10px;
+}
+
+#right-part ul{
+    display: flex;
+    list-style: none;
+}
+#right-part a{
+    margin: 0px 10px 0px 10px;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+#right-part a:hover{
+    text-decoration:underline;
+}

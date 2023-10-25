@@ -9,14 +9,14 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   title = 'sds2-project';
-  firestore: Firestore = inject(Firestore);
-  items$: Observable<any[]>;
+  /*firestore: Firestore = inject(Firestore);
+  items$: Observable<any[]>;*/
 
   constructor() {
-    const aCollection = collection(this.firestore, 'items')
+    /*const aCollection = collection(this.firestore, 'items')
     this.items$ = collectionData(aCollection);
     console.log("avant");
     console.log(this.items$);
-    console.log("après");
+    console.log("après");*/
   }
 }
