@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "sds2-162f6": {
+      "hosting": {
+        "sds2-project": [
+          "sds2-162f6"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "sds2-162f6"
+  }
+}
