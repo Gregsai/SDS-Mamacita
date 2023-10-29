@@ -3,28 +3,25 @@
   <body>
     <header>
       <div id="left-part">
-        <a href="https://www.put.poznan.pl/en">
+        <a [routerLink]="['/']">
           <img src="https://i.studyinpoland.pl/universities/logo/poznan-university-of-technology.png" alt="Poznan University Of Technology Icon">
         </a>
-        <p>Website Title</p>
+        <p>CES</p>
       </div>
       <div id="right-part">
         <ul class="sections">
-          <a href=""><li>Section 1</li></a>
-          <a href=""><li>Section 2</li></a>
-          <a href=""><li>Section 3</li></a>
-          <a href=""><li>Section 4</li></a>
+          <a [routerLink]="['courses']"><li>Courses</li></a>
+          <a href=""><li>Learning Agreement</li></a>
+          <a href=""><li>Cultural Ressources</li></a>
+          <a href=""><li>Forum</li></a>
         </ul> 
       </div>
     </header>
     <main>
-      <app-courses></app-courses>
+      <router-outlet></router-outlet>
     </main>
-    <h1>dd</h1>
-    <ul>
-      <!--<li class="text" *ngFor="let item of items$ | async">
-        {{item.name}}
-      </li>-->
-    </ul> 
+    <footer>
+      <p>Realized by <br> Erasmus + Students</p>
+    </footer>
   </body>
 </html>

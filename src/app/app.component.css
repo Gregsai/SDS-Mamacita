@@ -1,8 +1,18 @@
+body{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color:grey;
+    background-color:#141D38;
+    color: white;
     width: 100%;
 }
 
@@ -29,7 +39,7 @@ header{
 #right-part a{
     margin: 0px 10px 0px 10px;
     text-decoration: none;
-    color: black;
+    color: white;
     font-size: 20px;
 }
 
@@ -39,6 +49,15 @@ header{
 
 
 main{
-    display: flex;
-    justify-content: center;
+    height: 100%;
 }
+
+
+footer {
+    text-align: center;
+    color: white;
+    margin-top: auto;
+    background-color: #141D38;
+    font-weight: bold;
+  }
+  
