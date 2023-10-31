@@ -12,6 +12,7 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { CoursesComponent } from './components/courses/courses.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     RouterModule.forRoot(routeConfig),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
