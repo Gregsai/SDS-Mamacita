@@ -16,3 +16,33 @@
     </tr>
   </tbody>
 </table>
+
+<h2>Delete Course From ID</h2>
+<form (submit)="deleteCourses()">
+  <div class="form-group">
+    <label for="courseId">Course id</label>
+    <input type="text" class="form-control" id="courseId" [(ngModel)]="courseId" name="courseId" required>
+  </div>
+  <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+
+<h2>Add a new course</h2>
+<form (submit)="addCourses(newCourse)">
+  <div class="form-group">
+    <label for="name">Course Name</label>
+    <input type="text" class="form-control" id="name" [(ngModel)]="newCourse.name" name="name" required>
+  </div>
+  <div class="form-group">
+    <label for="faculty">Faculty</label>
+    <input type="text" class="form-control" id="faculty" [(ngModel)]="newCourse.faculty" name="faculty" required>
+  </div>
+  <div class="form-group">
+    <label for="ects">ECTS</label>
+    <input type="number" class="form-control" id="ects" [(ngModel)]="newCourse.ects" name="ects" required>
+  </div>
+  <div class="form-group">
+    <label for="language">Language</label>
+    <input type="text" class="form-control" id="language" [(ngModel)]="newCourse.language" name="language" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
+</form>
