@@ -12,7 +12,6 @@ import { FormsModule } from '@angular/forms';
 export class CoursesComponent implements OnInit {
   courses$: Observable<any[]> | undefined;
   newCourse: any = {};
-  courseId: string = '';
   constructor(private coursesService: CoursesService) {}
 
   ngOnInit() {
@@ -24,11 +23,10 @@ export class CoursesComponent implements OnInit {
       name: newCourse.name,
       faculty: newCourse.faculty,
       ects: newCourse.ects,
-      language: newCourse.language
+      language: newCourse.language,
+      link: newCourse.link,
     };
-  
     this.coursesService.addCourse(data).then(() => {
-      this.courses$ = this.coursesService.getCollectionData('courses');
       this.newCourse = {};
     });;
   }
@@ -43,11 +41,7 @@ export class CoursesComponent implements OnInit {
   //     this.courses$ = this.coursesService.getCollectionData('courses');
   //   })
   // }
-  deleteCourses() {
-    const id = this.courseId;
-    this.coursesService.deleteCourse(id).then(() => {
-      this.courses$ = this.coursesService.getCollectionData('courses');
-      this.courseId = '';
-    });
+  deleteCourses(courseId: string) {
+    this.coursesService.deleteCourse(courseId)
   }
 }
