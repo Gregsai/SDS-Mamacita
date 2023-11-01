@@ -10,8 +10,7 @@ export class CoursesService {
   constructor(private firestore: Firestore) {}
 
   getCollectionData(collectionName: string): Observable<any[]> {
-    const aCollection = collection(this.firestore, collectionName);
-    return collectionData(aCollection);
+    return collectionData(collection(this.firestore, collectionName), { idField: 'id'});
   }
 
   addCourse(data:object){
