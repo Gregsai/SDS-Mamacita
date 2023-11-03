@@ -1,5 +1,5 @@
 #main-menu{
-    background-image: url("../../images/backgroundSDS.jpg");
+    background-image: url("../../../assets/images/backgroundSDS.jpg");
     background-size: cover;
     display: flex;
     flex-wrap: wrap;
