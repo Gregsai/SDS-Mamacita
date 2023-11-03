@@ -24,14 +24,20 @@
 }
 
 #main-menu a div{
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     font-size: 30px;
     font-weight: bold;
 }
 
 .description-menu{
+    display: flex;
+    justify-content: center;
+}
+
+.description-menu p{
+    padding: 25px;
     font-size: 20px;
 }
