@@ -1,24 +1,4 @@
 <div id="root-courses">
-  <div id="head-toolBar">
-    <div id="left-head-toolBar">
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-        <label class="form-check-label" for="flexCheckChecked">
-          Select All
-        </label>
-      </div>
-      <button type="button" class="btn btn-success">Add</button>
-      <button type="button" class="btn btn-danger">Delete</button>
-    </div>
-    <div id="right-head-toolBar">
-      <button type="button" class="btn btn-primary">Add course</button>
-      <a href="">
-        <button type="button" class="btn btn-light">
-          <img id="cart" src="assets/images/cart.png" alt="cart icon" />
-        </button>
-      </a>
-    </div>
-  </div>
   <div id="main-content">
     <div id="left-toolBar">
       <div id="form-div">
@@ -126,32 +106,66 @@
         </form>
       </div>
     </div>
-
-    <table class="table table-bordered table-striped table-hover">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Faculty</th>
-          <th>ECTS</th>
-          <th>Language</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let course of courses$ | async">
-          <td class="course-name">
-            <input type="checkbox" [(ngModel)]="course.selected">
-            <a href="{{ course.link }}">{{ course.name }}</a>
-          </td>
-          <td>{{ course.faculty }}</td>
-          <td>{{ course.ects }}</td>
-          <td>{{ course.language }}</td>
-          <td>
-            <button class="btn btn-danger" (click)="deleteCourses(course.id)">
-              Delete
+    <div id="main-interface">
+      <div id="head-toolBar">
+        <div id="left-head-toolBar">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              id="flexCheckChecked"
+              checked
+            />
+            <label class="form-check-label" for="flexCheckChecked">
+              Select All
+            </label>
+          </div>
+          <div>
+            <select class="form-control" id="faculty" name="faculty" required>
+              <option value="">Select an Action</option>
+              <option value="delete">Delete</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-primary">Apply</button>
+        </div>
+        <div id="right-head-toolBar">
+          <button type="button" class="btn btn-primary">Add course</button>
+          <a href="">
+            <button type="button" class="btn btn-light">
+              <img id="cart" src="assets/images/cart.png" alt="cart icon" />
             </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          </a>
+        </div>
+      </div>
+      <table
+        class="table table-bordered table-striped table-hover table-secondary"
+      >
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Faculty</th>
+            <th>ECTS</th>
+            <th>Language</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of courses$ | async">
+            <td class="course-name">
+              <input type="checkbox" [(ngModel)]="course.selected" />
+              <a href="{{ course.link }}">{{ course.name }}</a>
+            </td>
+            <td>{{ course.faculty }}</td>
+            <td>{{ course.ects }}</td>
+            <td>{{ course.language }}</td>
+            <td>
+              <button class="btn btn-danger" (click)="deleteCourses(course.id)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
