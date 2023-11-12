@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { CoursesService } from '../../services/courses.service'; // Le chemin relatif pour accéder au service
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
+  @ViewChild('addCourseModal') addCourseModal: any;
   courses$: Observable<any[]> | undefined;
   newCourse: any = {};
   constructor(private coursesService: CoursesService) {}
@@ -19,16 +20,20 @@ export class CoursesComponent implements OnInit {
     this.courses$ = this.coursesService.getCollectionData('courses');
   }
   addCourses(newCourse: any) {
-    const data = {
-      name: newCourse.name,
-      faculty: newCourse.faculty,
-      ects: newCourse.ects,
-      language: newCourse.language,
-      link: newCourse.link,
-    };
-    this.coursesService.addCourse(data).then(() => {
-      this.newCourse = {};
-    });;
+    if(window.confirm('Are sure you want to add this course ?')){
+      const data = {
+        name: newCourse.name,
+        faculty: newCourse.faculty,
+        ects: newCourse.ects,
+        language: newCourse.language,
+        link: newCourse.link,
+      };
+      this.coursesService.addCourse(data).then(() => {
+        this.newCourse = {};
+      });;
+
+
+    }
   }
   // addCourses(data:object){
   //   this.coursesService.addCourse(data).then(() => {
