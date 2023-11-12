@@ -1,8 +1,7 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
 import { CoursesService } from '../../services/courses.service'; // Le chemin relatif pour accéder au service
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
-
 
 @Component({
   selector: 'app-courses',
@@ -10,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  @ViewChild('addCourseModal') addCourseModal: any;
+  @ViewChild('closeModal') closeModal!: ElementRef
   courses$: Observable<any[]> | undefined;
   newCourse: any = {};
   constructor(private coursesService: CoursesService) {}
@@ -30,6 +29,7 @@ export class CoursesComponent implements OnInit {
       };
       this.coursesService.addCourse(data).then(() => {
         this.newCourse = {};
+        this.closeModal.nativeElement.click();
       });;
 
 
