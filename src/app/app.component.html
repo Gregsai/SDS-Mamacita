@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <header>
+      <div id="left-part">
+        <a [routerLink]="['/']">
+          <img src="https://i.studyinpoland.pl/universities/logo/poznan-university-of-technology.png" alt="Poznan University Of Technology Icon">
+        </a>
+        <p>CES</p>
+      </div>
+      <div id="right-part">
+        <ul class="sections">
+          <a [routerLink]="['courses']"><li>Courses</li></a>
+          <a href=""><li>Learning Agreement</li></a>
+          <a href=""><li>Cultural Ressources</li></a>
+          <a href=""><li>Forum</li></a>
+        </ul> 
+      </div>
+    </header>
+    <div id="main-footer">
+      <main>
+        <router-outlet></router-outlet>
+      </main>
+      <footer>
+        <p>Realized by <br> Erasmus + Students</p>
+      </footer>
+    </div>
+  </body>
+</html>
