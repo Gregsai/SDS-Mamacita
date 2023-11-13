@@ -26,6 +26,8 @@ export class CoursesComponent implements OnInit {
         ects: newCourse.ects,
         language: newCourse.language,
         link: newCourse.link,
+        semester: newCourse.semester,
+        code: newCourse.code,
       };
       this.coursesService.addCourse(data).then(() => {
         this.newCourse = {};

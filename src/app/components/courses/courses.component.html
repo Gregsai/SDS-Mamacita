@@ -73,9 +73,19 @@
                           required />
                       </div>
                       <div class="form-group">
+                        <label for="code">Course Code</label>
+                        <input type="text" class="form-control" id="code" [(ngModel)]="newCourse.code" name="code"
+                          required />
+                      </div>
+                      <div class="form-group">
                         <label for="faculty">Faculty</label>
                         <input type="text" class="form-control" id="faculty" [(ngModel)]="newCourse.faculty"
                           name="faculty" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="semester">Semester</label>
+                        <input type="number" class="form-control" id="semester" [(ngModel)]="newCourse.semester" name="semester"
+                          required />
                       </div>
                       <div class="form-group">
                         <label for="ects">ECTS</label>
