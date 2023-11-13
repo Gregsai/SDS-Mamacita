@@ -50,6 +50,10 @@
           </div>
           <button type="button" class="btn btn-primary">Apply</button>
         </div>
+        
+        <div *ngIf="showPopup" class="alert alert-success" role="alert" id="add-course-success">
+          Course added successfully!
+        </div>
         <div id="right-head-toolBar">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCourseModal">Add
             course</button>

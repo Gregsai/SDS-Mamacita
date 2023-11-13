@@ -4,9 +4,11 @@
     padding: 10px;
 }
 #head-toolBar{
+    height: 5vh;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     /* border: solid; */
     border-radius: 10px;
     margin-bottom: 10px;
