@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
 import { CoursesService } from '../../services/courses.service'; // Le chemin relatif pour accéder au service
 import { Observable } from 'rxjs';
 import { FormsModule } from '@angular/forms';
-
 
 @Component({
   selector: 'app-courses',
@@ -10,14 +9,17 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
+  @ViewChild('closeModal') closeModal!: ElementRef
   courses$: Observable<any[]> | undefined;
   newCourse: any = {};
+  showPopup: any;
   constructor(private coursesService: CoursesService) {}
 
   ngOnInit() {
     // Utilisez le service Firestore pour récupérer les données dans la méthode ngOnInit
     this.courses$ = this.coursesService.getCollectionData('courses');
   }
+ 
   addCourses(newCourse: any) {
     const data = {
       name: newCourse.name,
@@ -25,11 +27,22 @@ export class CoursesComponent implements OnInit {
       ects: newCourse.ects,
       language: newCourse.language,
       link: newCourse.link,
+      semester: newCourse.semester,
+      code: newCourse.code,
     };
+
     this.coursesService.addCourse(data).then(() => {
       this.newCourse = {};
-    });;
+      this.showPopup = true; 
+      this.closeModal.nativeElement.click(); 
+
+      
+      setTimeout(() => {
+        this.showPopup = false;
+      }, 5000);
+    });
   }
+
   // addCourses(data:object){
   //   this.coursesService.addCourse(data).then(() => {
   //     this.courses$ = this.coursesService.getCollectionData('courses');
