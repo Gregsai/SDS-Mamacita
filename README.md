@@ -34,7 +34,7 @@ SDS Mamacita is a project aimed at assisting Erasmus students studying at Pozna≈
 We will communicate using WhatsApp for fast messaging and Discord for videocalls.
 To do real life meetings we will go to the Centrum Library.
 
-## User Utilisation
+## User manual
 to use the app, just click : https://sds2-162f6.web.app/
 
 ## Installation manual
