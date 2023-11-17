@@ -10,7 +10,7 @@
           </div>
           <div class="form-group">
             <label for="faculty">Faculty</label>
-            <select class="form-control" id="faculty" name="faculty" required>
+            <select class="form-control" id="filter-faculty" name="faculty" required>
               <option value="">Select Faculty</option>
               <option value="computing">Computing</option>
               <option value="telecommunication">Telecommunication</option>
@@ -18,12 +18,16 @@
             </select>
           </div>
           <div class="form-group">
+            <label for="semester">Semester</label>
+            <input type="number" class="form-control" id="filter-semester" name="semester" placeholder="Optional" min="0" max="8"/>
+          </div>
+          <div class="form-group">
             <label for="ects">ECTS</label>
-            <input type="number" class="form-control" id="ects" name="ects" placeholder="Optional" />
+            <input type="number" class="form-control" id="filter-ects" name="ects" placeholder="Optional" min="0"/>
           </div>
           <div class="form-group">
             <label for="language">Language</label>
-            <select class="form-control" id="language" name="language" required>
+            <select class="form-control" id="filter-language" name="language" required>
               <option value="">Select Language</option>
               <option value="english">English</option>
               <option value="polish">Polish</option>
@@ -89,12 +93,12 @@
                       <div class="form-group">
                         <label for="semester">Semester</label>
                         <input type="number" class="form-control" id="semester" [(ngModel)]="newCourse.semester" name="semester"
-                          required />
+                          required min="1" max="8"/>
                       </div>
                       <div class="form-group">
                         <label for="ects">ECTS</label>
                         <input type="number" class="form-control" id="ects" [(ngModel)]="newCourse.ects" name="ects"
-                          required />
+                          required min="0"/>
                       </div>
                       <div class="form-group">
                         <label for="language">Language</label>
