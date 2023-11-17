@@ -35,5 +35,13 @@ We will communicate using WhatsApp for fast messaging and Discord for videocalls
 To do real life meetings we will go to the Centrum Library.
 
 ## Installation manual
+```
+$ reek --no-documentation demo.rb
+Inspecting 1 file(s):
+S
 
+demo.rb -- 2 warnings:
+  [4]:UncommunicativeMethodName: Smelly#x has the name 'x'
+  [5]:UncommunicativeVariableName: Smelly#x has the variable name 'y'
+```
 To be continued
