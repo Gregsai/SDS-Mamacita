@@ -35,13 +35,23 @@ We will communicate using WhatsApp for fast messaging and Discord for videocalls
 To do real life meetings we will go to the Centrum Library.
 
 ## Installation manual
-```
-$ reek --no-documentation demo.rb
-Inspecting 1 file(s):
-S
+Note : Make sure to have angular already installed on your device.
 
-demo.rb -- 2 warnings:
-  [4]:UncommunicativeMethodName: Smelly#x has the name 'x'
-  [5]:UncommunicativeVariableName: Smelly#x has the variable name 'y'
+1) Create a local directory on your computer
+2) Open a terminal and go to your new directory
+3) Clone the project with the git clone command :
 ```
-To be continued
+git clone https://github.com/Gregsai/SDS-Mamacita.git
+```
+4) Move to the project directory :
+```
+cd SDS-Mamacita
+```
+5) Install dependencies :
+```
+npm install
+```
+6) Run the project :
+```
+ng serve --open
+```
