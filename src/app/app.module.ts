@@ -13,12 +13,14 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { CoursesComponent } from './components/courses/courses.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { FormsModule } from '@angular/forms';
+import { CreatelaComponent } from './components/createla/createla.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CoursesComponent,
-    HomePageComponent
+    HomePageComponent,
+    CreatelaComponent
   ],
   imports: [
     BrowserModule,
