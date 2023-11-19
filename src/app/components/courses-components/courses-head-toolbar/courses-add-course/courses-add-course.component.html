@@ -1,0 +1,63 @@
+<div id="right-head-toolBar">
+  <div class="popup" [ngClass]="{ active: showPopup }">
+    Course added successfully!
+  </div>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCourseModal">Add
+      course</button>
+    <div class="modal fade" #addCourseModal id="addCourseModal" tabindex="-1" role="dialog" aria-labelledby="addCourseModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addCourseModalLabel">Add a new course</h5>
+            <button #closeModal type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="form-div">
+              <form (submit)="addCourse(newCourse)">
+                <div class="form-group">
+                  <label for="name">Course Name</label>
+                  <input type="text" class="form-control" id="name" [(ngModel)]="newCourse.name" name="name"
+                    required />
+                </div>
+                <div class="form-group">
+                  <label for="code">Course Code</label>
+                  <input type="text" class="form-control" id="code" [(ngModel)]="newCourse.code" name="code"
+                    required />
+                </div>
+                <div class="form-group">
+                  <label for="faculty">Faculty</label>
+                  <input type="text" class="form-control" id="faculty" [(ngModel)]="newCourse.faculty"
+                    name="faculty" required />
+                </div>
+                <div class="form-group">
+                  <label for="semester">Semester</label>
+                  <input type="number" class="form-control" id="semester" [(ngModel)]="newCourse.semester" name="semester"
+                    required min="1" max="8"/>
+                </div>
+                <div class="form-group">
+                  <label for="ects">ECTS</label>
+                  <input type="number" class="form-control" id="ects" [(ngModel)]="newCourse.ects" name="ects"
+                    required min="0"/>
+                </div>
+                <div class="form-group">
+                  <label for="language">Language</label>
+                  <input type="text" class="form-control" id="language" [(ngModel)]="newCourse.language"
+                    name="language" required />
+                </div>
+                <div class="form-group">
+                  <label for="link">Link to the course description</label>
+                  <input type="text" class="form-control" id="link" [(ngModel)]="newCourse.link" name="link"
+                    required />
+                </div>
+                <!-- Add other form fields as needed -->
+                <button type="submit" class="btn btn-primary">Add</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

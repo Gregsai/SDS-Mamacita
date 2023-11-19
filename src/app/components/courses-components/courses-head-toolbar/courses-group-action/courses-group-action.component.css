@@ -1,0 +1,8 @@
+#group-action{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#group-action > *{
+    padding-inline: 10px;
+}

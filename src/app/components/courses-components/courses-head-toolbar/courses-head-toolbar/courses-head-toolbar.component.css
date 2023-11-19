@@ -1,0 +1,9 @@
+div{
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#right-head-toolBar > *{
+    padding: 0px 5px;
+}
