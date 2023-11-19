@@ -17,10 +17,6 @@ const routeConfig: Routes = [
     path: 'createla',
     component: CreatelaComponent,
   },
-  {
-    path: 'courses-bis',
-    component: CoursesBisComponent,
-  },
 ];
 
 export default routeConfig;
