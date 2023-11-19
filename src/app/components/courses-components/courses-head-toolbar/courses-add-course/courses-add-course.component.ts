@@ -15,13 +15,13 @@ export class CoursesAddCourseComponent {
 
   addCourse(newCourse: any) {
     const data = {
-      name: newCourse.name,
-      faculty: newCourse.faculty,
+      name: newCourse.name.toLowerCase(),
+      faculty: newCourse.faculty.toLowerCase(),
       ects: newCourse.ects,
-      language: newCourse.language,
+      language: newCourse.language.toLowerCase(),
       link: newCourse.link,
       semester: newCourse.semester,
-      code: newCourse.code,
+      code: newCourse.code.toLowerCase(),
     };
 
     this.coursesService.addCourse(data).then(() => {
