@@ -53,6 +53,7 @@ cd SDS-Mamacita
 5) Install dependencies :
 ```
 npm install
+npm install -g @angular/cli
 ```
 6) Run the project :
 ```
