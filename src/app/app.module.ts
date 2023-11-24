@@ -21,7 +21,6 @@ import { CoursesFilterFavoritesComponent } from './components/courses-components
 import { CoursesListComponent } from './components/courses-components/courses-list/courses-list/courses-list.component';
 import { CoursesHeadToolbarComponent } from './components/courses-components/courses-head-toolbar/courses-head-toolbar/courses-head-toolbar.component';
 import { CoursesLeftToolbarComponent } from './components/courses-components/courses-left-toolbar/courses-left-toolbar/courses-left-toolbar.component';
-import { CoursesCartComponent } from './components/courses-components/courses-head-toolbar/courses-cart/courses-cart.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +35,6 @@ import { CoursesCartComponent } from './components/courses-components/courses-he
     CoursesListComponent,
     CoursesHeadToolbarComponent,
     CoursesLeftToolbarComponent,
-    CoursesCartComponent
   ],
   imports: [
     BrowserModule,

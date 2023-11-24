@@ -1,8 +1,4 @@
-div{
-    padding-right: 5px;
-}
 .course-name *{
     display: inline-block;
     vertical-align: middle; 
-    margin-right: 10px; 
 }
