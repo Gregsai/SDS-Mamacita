@@ -1,7 +1,9 @@
 #root-courses{
     display: flex;
+    margin-inline: 30px;
 
 }
 #right-part{
     width: 100%;
+    margin-left: 30px;
 }
