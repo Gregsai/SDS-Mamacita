@@ -8,3 +8,30 @@
     overflow: hidden; /* Pour s'assurer que le fond ne dépasse pas les coins arrondis */
   }
   
+  .popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #E5E5E5;
+    padding: 10px 20px;
+    border: 1px solid #14213D;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .popup-buttons{
+    display: flex;
+    justify-content: space-between;
+  }
+  .popup-buttons > .btn{
+    width: 100%;
+  }
+  .popup.active {
+    opacity: 1;
+    visibility: visible;
+  }
+  

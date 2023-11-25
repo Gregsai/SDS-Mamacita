@@ -21,6 +21,7 @@ import { CoursesFilterFavoritesComponent } from './components/courses-components
 import { CoursesListComponent } from './components/courses-components/courses-list/courses-list/courses-list.component';
 import { CoursesHeadToolbarComponent } from './components/courses-components/courses-head-toolbar/courses-head-toolbar/courses-head-toolbar.component';
 import { CoursesLeftToolbarComponent } from './components/courses-components/courses-left-toolbar/courses-left-toolbar/courses-left-toolbar.component';
+import { CoursesService } from './services/courses.service'; // Assurez-vous d'importer le service correctement
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CoursesLeftToolbarComponent } from './components/courses-components/cou
     RouterModule.forRoot(routeConfig),
     FormsModule
   ],
-  providers: [],
+  providers: [
+    CoursesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -25,10 +25,19 @@
         <td>{{ course.language }}</td>
         <td>
           <button class="btn btn-danger" (click)="deleteCourses(course.id)">
-            Delete
+            <img src="./../../assets/images/white-trash.png" alt="trash" width="15px">
           </button>
+        
+          <div class="popup" [ngClass]="{ active: showDeleteConfirmation }">
+            <p>Are you sure you want to delete this course?</p>
+            <div class="popup-buttons">
+              <button class="btn btn-danger" (click)="confirmDelete()">Yes</button>
+              <button class="btn btn-secondary" (click)="cancelDelete()">No</button>
+            </div>
+          </div>
         </td>
       </tr>
     </tbody>
   </table>
 </div>
+
