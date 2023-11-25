@@ -11,7 +11,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color:#141D38;
+    background-color:#14213D;
     color: white;
     width: 100%;
 }
@@ -64,7 +64,7 @@ main{
 footer {
     text-align: center;
     color: white;
-    background-color: #141D38;
+    background-color: #14213D;
     font-weight: bold;
     padding: 10px;
   }
