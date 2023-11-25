@@ -6,3 +6,8 @@
 #group-action > *{
     padding-inline: 10px;
 }
+
+.btn-primary{
+    background-color: #FCA311;
+    border-color: #FCA311;
+  }
