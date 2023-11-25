@@ -31,21 +31,27 @@ header{
     width: 50px;
     margin: 10px;
 }
-
-#right-part ul{
-    display: flex;
+  
+  #right-part ul {
     list-style: none;
-}
-#right-part a{
-    margin: 0px 10px 0px 10px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0; 
+  }
+  
+  #right-part a {
     text-decoration: none;
     color: white;
     font-size: 20px;
-}
-
-#right-part a:hover{
-    text-decoration:underline;
-}
+    margin: 0 10px; 
+  }
+  
+  #right-part a:hover {
+    text-decoration: underline;
+  }
+  
 
 #main-footer{
     height: 100%;
