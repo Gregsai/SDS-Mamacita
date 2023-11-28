@@ -1,0 +1,18 @@
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <!-- Add other headers as needed -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of tableLaFavorites | async">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <!-- Add other cells as needed -->
+        <td><button (click)="moveItemToTable1(item)">Move to Table 1</button></td>
+      </tr>
+    </tbody>
+  </table>
+  
