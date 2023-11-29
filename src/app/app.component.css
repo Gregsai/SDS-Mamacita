@@ -33,27 +33,31 @@ header{
     width: 50px;
     margin: 10px;
 }
-  
+
+#right-part{
+    margin-right: 20px;
+}
+
   #right-part ul {
     list-style: none;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0; 
+    margin: 0;
   }
-  
+
   #right-part a {
     text-decoration: none;
     color: white;
     font-size: 20px;
-    margin: 0 10px; 
+    margin: 0 10px;
   }
-  
+
   #right-part a:hover {
     text-decoration: underline;
   }
-  
+
 
 #main-footer{
     height: 100%;
@@ -70,4 +74,3 @@ footer {
     font-weight: bold;
     padding: 10px;
   }
-  
