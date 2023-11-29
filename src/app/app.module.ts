@@ -21,10 +21,9 @@ import { CoursesGroupActionComponent } from './components/courses-components/cou
 import { CoursesFilterComponent } from './components/courses-components/courses-left-toolbar/courses-filter/courses-filter.component';
 import { CoursesFilterFavoritesComponent } from './components/courses-components/courses-left-toolbar/courses-filter-favorites/courses-filter-favorites.component';
 import { CoursesListComponent } from './components/courses-components/courses-list/courses-list/courses-list.component';
-import { CoursesBisComponent } from './components/courses-bis/courses-bis.component';
 import { CoursesHeadToolbarComponent } from './components/courses-components/courses-head-toolbar/courses-head-toolbar/courses-head-toolbar.component';
 import { CoursesLeftToolbarComponent } from './components/courses-components/courses-left-toolbar/courses-left-toolbar/courses-left-toolbar.component';
-import { CoursesCartComponent } from './components/courses-components/courses-head-toolbar/courses-cart/courses-cart.component';
+import { CoursesService } from './services/courses.service'; // Assurez-vous d'importer le service correctement
 
 @NgModule({
   declarations: [
@@ -39,10 +38,8 @@ import { CoursesCartComponent } from './components/courses-components/courses-he
     CoursesFilterComponent,
     CoursesFilterFavoritesComponent,
     CoursesListComponent,
-    CoursesBisComponent,
     CoursesHeadToolbarComponent,
     CoursesLeftToolbarComponent,
-    CoursesCartComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +50,8 @@ import { CoursesCartComponent } from './components/courses-components/courses-he
     RouterModule.forRoot(routeConfig),
     FormsModule
   ],
-  providers: [],
+  providers: [
+    CoursesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -34,9 +34,6 @@ export class CoursesService {
   updateCoursesWithFilters(filters: any): void {
     let queryRef = collection(this.firestore, 'courses') as any;
   
-    if (filters.name) {
-      queryRef = query(queryRef, where('name', '==', filters.name.toLowerCase()));
-    }
     if (filters.faculty) {
       queryRef = query(queryRef, where('faculty', '==', filters.faculty.toLowerCase()));
     }
@@ -51,6 +48,10 @@ export class CoursesService {
     }
   
     collectionData(queryRef, { idField: 'id'}).subscribe(filteredCourses => {
+      if (filters.name) {
+        const searchTerm = filters.name.toLowerCase();
+        filteredCourses = filteredCourses.filter(course => course['name'].toLowerCase().includes(searchTerm));
+      }
       this.coursesSubject.next(filteredCourses);
     });
   }
