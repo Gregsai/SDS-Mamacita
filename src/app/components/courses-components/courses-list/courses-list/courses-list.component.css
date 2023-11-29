@@ -1,13 +1,13 @@
 .course-name *{
     display: inline-block;
-    vertical-align: middle; 
-    margin-right: 10px; 
+    vertical-align: middle;
+    margin-right: 10px;
 }
 .table {
     border-radius: 10px; /* Vous pouvez ajuster la valeur pour modifier le degré d'arrondi */
     overflow: hidden; /* Pour s'assurer que le fond ne dépasse pas les coins arrondis */
   }
-  
+
   .popup {
     position: absolute;
     top: 50%;
@@ -22,16 +22,15 @@
     visibility: hidden;
     transition: opacity 0.5s ease-in-out;
   }
-  
+
   .popup-buttons{
     display: flex;
     justify-content: space-between;
   }
   .popup-buttons > .btn{
-    width: 100%;
+    width: 40%;
   }
   .popup.active {
     opacity: 1;
     visibility: visible;
   }
-  
