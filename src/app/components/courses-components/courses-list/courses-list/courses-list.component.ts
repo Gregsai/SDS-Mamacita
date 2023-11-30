@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CoursesService } from '../../../../services/courses.service';
+import { CreatelaService } from 'src/app/services/createla.service';
 
 @Component({
   selector: 'app-courses-list',
@@ -12,7 +13,7 @@ export class CoursesListComponent implements OnInit {
   courseIdToDelete: string | null = null;
   showDeleteConfirmation = false;
 
-  constructor(private coursesService: CoursesService) {}
+  constructor(private coursesService: CoursesService, private createlaService: CreatelaService) {}
 
   ngOnInit(): void {
     this.courses$ = this.coursesService.courses$;
@@ -34,4 +35,12 @@ export class CoursesListComponent implements OnInit {
     this.courseIdToDelete = null;
     this.showDeleteConfirmation = false; // Cacher la confirmation
   }
+
+  copyItemToTable(item: any): void {
+    this.createlaService.copyItemToTable('courses', 'tablelafavorites', item)
+      .then(() => {
+        // Additional logic after copying item to Table 1
+      });
+  }
+  
 }

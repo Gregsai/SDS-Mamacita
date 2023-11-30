@@ -20,6 +20,13 @@ export class CreatelaService {
       .then(() => undefined); // Ensure the final return type is Promise<void>
   }
 
+  copyItemToTable(source: string, destination: string, item: any): Promise<void> {
+    const sourceDocRef = doc(this.firestore, `${source}/${item.id}`);
+    return this.addDocument(destination, item) // Add to destination
+      .then(() => undefined); // Ensure the final return type is Promise<void>
+  }
+  
+
   addDocument(collectionName: string, data: object): Promise<DocumentReference<DocumentData>> {
     return addDoc(collection(this.firestore, collectionName), data);
   }
