@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { CreatelaComponent } from './components/createla/createla.component';
 import { LaCoursesTableComponent } from './components/createla/la-courses-table/la-courses-table.component';
 import { LaFavoritesTableComponent } from './components/createla/la-favorites-table/la-favorites-table.component';
+
 import { CoursesAddCourseComponent } from './components/courses-components/courses-head-toolbar/courses-add-course/courses-add-course.component';
 import { CoursesGroupActionComponent } from './components/courses-components/courses-head-toolbar/courses-group-action/courses-group-action.component';
 import { CoursesFilterComponent } from './components/courses-components/courses-left-toolbar/courses-filter/courses-filter.component';
@@ -30,6 +31,28 @@ import { CoursesService } from './services/courses.service'; // Assurez-vous d'i
     AppComponent,
     CoursesComponent,
     HomePageComponent,
+    CreatelaComponent,
+    LaCoursesTableComponent,
+    LaFavoritesTableComponent,
+    CoursesAddCourseComponent,
+    CoursesGroupActionComponent,
+    CoursesFilterComponent,
+    CoursesFilterFavoritesComponent,
+    CoursesListComponent,
+    CoursesHeadToolbarComponent,
+    CoursesLeftToolbarComponent,
+
+    CreatelaComponent,
+    LaCoursesTableComponent,
+    LaFavoritesTableComponent,
+    CoursesAddCourseComponent,
+    CoursesGroupActionComponent,
+    CoursesFilterComponent,
+    CoursesFilterFavoritesComponent,
+    CoursesListComponent,
+    CoursesHeadToolbarComponent,
+    CoursesLeftToolbarComponent,
+
     CreatelaComponent,
     LaCoursesTableComponent,
     LaFavoritesTableComponent,
