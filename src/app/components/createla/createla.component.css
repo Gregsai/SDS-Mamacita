@@ -1,8 +1,18 @@
+/*
 #root-createla{
     display: flex;
     flex-direction: column;
     padding: 10px;
 }
+*/
+#root-createla{
+    display: flex;
+    padding-inline: 30px;
+    height: 100%;
+    background-color: #E5E5E5;
+
+}
+
 #head-toolBar{
     height: 5vh;
     display: flex;
