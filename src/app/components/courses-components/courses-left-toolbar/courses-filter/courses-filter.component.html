@@ -1,0 +1,38 @@
+<div id="form-div">
+  <h2>Filter</h2>
+  <form (ngSubmit)="applyFilters()">
+    <div class="form-group">
+      <label for="name">Course Name</label>
+      <input type="text" class="form-control" id="name" [(ngModel)]="filters.name" name="name" placeholder="Optional" />
+    </div>
+    <div class="form-group">
+      <label for="faculty">Faculty</label>
+      <select class="form-control" id="filter-faculty" [(ngModel)]="filters.faculty" name="faculty" required>
+        <option value="" disabled selected>Select Faculty</option>
+        <option value="">All</option>
+        <option value="computing">Computing</option>
+        <option value="telecommunication">Telecommunication</option>
+        <option value="telecommunication">Artificial Intelligence</option>
+      </select>      
+    </div>
+    <div class="form-group">
+      <label for="semester">Semester</label>
+      <input type="number" class="form-control" id="filter-semester" [(ngModel)]="filters.semester" name="semester" placeholder="Optional" min="1" max="8"/>
+    </div>
+    <div class="form-group">
+      <label for="ects">ECTS</label>
+      <input type="number" class="form-control" id="filter-ects" [(ngModel)]="filters.ects" name="ects" placeholder="Optional" min="0"/>
+    </div>
+    <div class="form-group">
+      <label for="language">Language</label>
+      <select class="form-control" id="filter-language" [(ngModel)]="filters.language" name="language" required>
+        <option value=""disabled selected>Select Language</option>
+        <option value="">All</option>
+        <option value="english">English</option>
+        <option value="polish">Polish</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Refresh</button>
+  </form>
+  
+</div>

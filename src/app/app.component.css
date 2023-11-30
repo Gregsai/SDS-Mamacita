@@ -1,17 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300&display=swap');
+*{
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
 body{
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
-    
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color:#141D38;
+    background-color:#14213D;
     color: white;
     width: 100%;
 }
@@ -31,21 +33,27 @@ header{
     width: 50px;
     margin: 10px;
 }
-
-#right-part ul{
-    display: flex;
+  
+  #right-part ul {
     list-style: none;
-}
-#right-part a{
-    margin: 0px 10px 0px 10px;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0; 
+  }
+  
+  #right-part a {
     text-decoration: none;
     color: white;
     font-size: 20px;
-}
-
-#right-part a:hover{
-    text-decoration:underline;
-}
+    margin: 0 10px; 
+  }
+  
+  #right-part a:hover {
+    text-decoration: underline;
+  }
+  
 
 #main-footer{
     height: 100%;
@@ -58,7 +66,7 @@ main{
 footer {
     text-align: center;
     color: white;
-    background-color: #141D38;
+    background-color: #14213D;
     font-weight: bold;
     padding: 10px;
   }

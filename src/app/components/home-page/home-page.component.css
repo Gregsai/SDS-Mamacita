@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300&display=swap');
+
 #main-menu{
     background-image: url("../../../assets/images/backgroundSDS.jpg");
     background-size: cover;
@@ -40,4 +42,11 @@
 .description-menu p{
     padding: 25px;
     font-size: 20px;
+}
+
+p{
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 70px;
+    font-weight: bold;
+    color: #E5E5E5;
 }

@@ -1,0 +1,15 @@
+#form-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn-primary{
+    background-color: #FCA311;
+    border-color: #FCA311;
+    width: 100%;
+}
+
+h2{
+    font-weight: bold;
+}
