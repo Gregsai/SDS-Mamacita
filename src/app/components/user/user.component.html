@@ -1,1 +1,60 @@
-<p>user works!</p>
+<button *ngIf="!userLoggedIn" type="button" class="btn sign-in-up" data-toggle="modal" data-target="#userModal">
+  Sign In/Up
+</button>
+
+<button *ngIf="userLoggedIn" type="button" class="btn btn-danger log-out" (click)="signOut()">
+  Log out
+</button>
+
+<!-- Modal -->
+<div class="modal" id="userModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ userLoggedIn ? 'Sign Out' : (showSignUp ? 'Sign Up' : 'Sign In') }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <ng-container *ngIf="!userLoggedIn || showSignUp">
+          <form #userForm="ngForm">
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" id="email" name="email" [(ngModel)]="email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" id="password" name="password" [(ngModel)]="password">
+            </div>
+
+
+            <div *ngIf="showSignUp" class="form-group">
+              <label for="status">Status</label>
+              <select class="form-control" id="status" name="status" [(ngModel)]="status">
+                <option value="PUT Teacher">PUT Teacher</option>
+                <option value="PUT Student">PUT Student</option>
+                <option value="PUT Erasmus Student">PUT Erasmus Student</option>
+                <option value="Erasmus Candidate">Erasmus Candidate</option>
+              </select>
+            </div>
+
+            <div *ngIf="signUpError || signInError" class="error-message">{{ signUpError || signInError }}</div>
+
+            <div id="buttons">
+              <button type="button" class="btn btn-primary" (click)="userLoggedIn ? signOut() : (showSignUp ? signUp() : signIn())">
+                {{ userLoggedIn ? 'Sign Out' : (showSignUp ? 'Sign Up' : 'Sign In') }}
+              </button>
+
+              <a href="javascript:void(0)" (click)="showSignUp = !showSignUp">
+                {{ userLoggedIn ? 'Already have an account?' : (showSignUp ? 'Already a member? Sign In' : 'Don\'t have an account? Sign Up') }}
+              </a>
+            </div>
+          </form>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
