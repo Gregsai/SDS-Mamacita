@@ -1,5 +1,5 @@
 <div>
-  <table class="table table-bordered table-striped table-hover table-secondary">
+  <table [ngClass]="{ '': isLoggedIn, 'table-logout': !isLoggedIn }" class="table table-bordered table-striped table-hover table-secondary">
     <thead>
       <tr>
         <th>Name</th>
@@ -8,7 +8,7 @@
         <th>ECTS</th>
         <th>Semester</th>
         <th>Language</th>
-        <th>Actions</th>
+        <th *ngIf="isLoggedIn">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -23,7 +23,7 @@
         <td>{{ course.ects }}</td>
         <td>{{ course.semester }}</td>
         <td>{{ course.language }}</td>
-        <td>
+        <td *ngIf="isLoggedIn">
           <button class="btn btn-danger" (click)="deleteCourses(course.id)">
             <img src="./../../assets/images/white-trash.png" alt="trash" width="15px">
           </button>

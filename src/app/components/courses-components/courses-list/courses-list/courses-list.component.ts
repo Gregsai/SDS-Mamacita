@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CoursesService } from '../../../../services/courses.service';
 import { CreatelaService } from 'src/app/services/createla.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-courses-list',
@@ -12,10 +13,15 @@ export class CoursesListComponent implements OnInit {
   courses$: Observable<any[]> | undefined;
   courseIdToDelete: string | null = null;
   showDeleteConfirmation = false;
+  isLoggedIn: boolean = false;
 
-  constructor(private coursesService: CoursesService, private createlaService: CreatelaService) {}
+  constructor(
+    private coursesService: CoursesService,
+    private createlaService: CreatelaService,
+    private userService: UserService) {}
 
   ngOnInit(): void {
+    this.isLoggedIn = this.userService.isLoggedIn();
     this.courses$ = this.coursesService.courses$;
   }
 
