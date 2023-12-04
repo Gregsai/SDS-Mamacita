@@ -14,6 +14,8 @@ export class CoursesListComponent implements OnInit {
   courseIdToDelete: string | null = null;
   showDeleteConfirmation = false;
   isLoggedIn: boolean = false;
+  status: string = '';
+
 
   constructor(
     private coursesService: CoursesService,
@@ -23,6 +25,7 @@ export class CoursesListComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn = this.userService.isLoggedIn();
     this.courses$ = this.coursesService.courses$;
+    this.getStatus();
   }
 
   deleteCourses(courseId: string) {
@@ -49,4 +52,9 @@ export class CoursesListComponent implements OnInit {
       });
   }
 
+  getStatus(): void {
+    if (this.isLoggedIn) {
+      this.status = this.userService.getStatus();
+    }
+  }
 }
