@@ -24,7 +24,7 @@
         <td>{{ course.semester }}</td>
         <td>{{ course.language }}</td>
         <td *ngIf="isLoggedIn">
-          <button *ngIf = "status === 'teacher' || status === 'student' || status === 'erasmusstudent'" class="btn btn-danger" (click)="deleteCourses(course.id)">
+          <button *ngIf = "status === 'erasmusstudent'" class="btn btn-danger" (click)="deleteCourses(course.id)">
             <img src="./../../assets/images/white-trash.png" alt="trash" width="15px">
           </button>
 
