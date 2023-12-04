@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-courses',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent {
+  isLoggedIn: boolean = false;
 
+  constructor(
+    private userService: UserService,) {}
+
+    ngOnInit(): void {
+      this.isLoggedIn = this.userService.isLoggedIn();
+  }
 }
