@@ -3,7 +3,7 @@
       <app-courses-left-toolbar></app-courses-left-toolbar>
   </div>
   <div id="right-part">
-      <div id="head-part">
+      <div id="head-part" *ngIf="isLoggedIn">
           <app-courses-head-toolbar></app-courses-head-toolbar>
       </div>
       <div id="main-part">
