@@ -8,6 +8,8 @@ import { UserService } from './user.service';
 })
 export class FavoritesService {
   private favoritesSubject = new BehaviorSubject<any[]>([]);
+  favorites$: Observable<any[]> = this.favoritesSubject.asObservable();
+
   constructor(
     private userService: UserService,
     private firestore: Firestore

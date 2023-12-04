@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { CoursesService } from '../../../../services/courses.service';
 import { CreatelaService } from 'src/app/services/createla.service';
 import { UserService } from 'src/app/services/user.service';
+import { FavoritesService } from 'src/app/services/favorites.service';
 
 @Component({
   selector: 'app-courses-list',
@@ -15,16 +16,19 @@ export class CoursesListComponent implements OnInit {
   showDeleteConfirmation = false;
   isLoggedIn: boolean = false;
   status: string = '';
-
+  favorites$: Observable<any[]> | undefined;
 
   constructor(
     private coursesService: CoursesService,
     private createlaService: CreatelaService,
-    private userService: UserService) {}
+    private userService: UserService,
+    private favoritesService: FavoritesService,
+    ) {}
 
   ngOnInit(): void {
     this.isLoggedIn = this.userService.isLoggedIn();
     this.courses$ = this.coursesService.courses$;
+    this.favorites$ = this.favoritesService.favorites$
     this.getStatus();
   }
 
@@ -56,5 +60,35 @@ export class CoursesListComponent implements OnInit {
     if (this.isLoggedIn) {
       this.status = this.userService.getStatus();
     }
+  }
+
+  toggleFavorite(courseId: string) {
+    this.favoritesService.toggleCourseFavorite(courseId)
+      .then(() => {
+        const button = document.querySelector(`button[data-course-id="${courseId}"]`);
+        if (button) {
+          const img = button.querySelector('img');
+          if (img) {
+            const imgSrc = img.getAttribute('src');
+            const newImgSrc = imgSrc === './../../assets/images/empty-heart.png'
+              ? './../../assets/images/full-heart.png'
+              : './../../assets/images/empty-heart.png';
+            img.setAttribute('src', newImgSrc);
+          }
+        }
+      })
+      .catch((error) => {
+        // Manage error
+      });
+  }
+
+  isCourseFavorited(courseId: string): boolean {
+    let isFavorited = false;
+
+    this.favoritesService.favorites$.subscribe((favoriteCourses: any[]) => {
+      isFavorited = favoriteCourses.some(course => course.id === courseId);
+    });
+
+    return isFavorited;
   }
 }

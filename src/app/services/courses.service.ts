@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable ,take} from 'rxjs';
 import { DocumentReference, Firestore, addDoc, collection, collectionData, deleteDoc, doc, query, where } from '@angular/fire/firestore';
+import { FavoritesService } from './favorites.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
-  private coursesSubject = new BehaviorSubject<any[]>([]); 
+  private coursesSubject = new BehaviorSubject<any[]>([]);
   courses$: Observable<any[]> = this.coursesSubject.asObservable();
 
-  constructor(private firestore: Firestore) {
-    this.updateCourses(); 
+  constructor(
+    private firestore: Firestore,
+    private favoritesService: FavoritesService) {
+    this.updateCourses();
   }
 
   getCollectionData(collectionName: string): Observable<any[]> {
@@ -23,7 +26,7 @@ export class CoursesService {
     });
   }
 
-  addCourse(data: object): Promise<DocumentReference<object>> { 
+  addCourse(data: object): Promise<DocumentReference<object>> {
     return addDoc(collection(this.firestore, 'courses'), data);
   }
 
@@ -33,7 +36,7 @@ export class CoursesService {
   }
   updateCoursesWithFilters(filters: any): void {
     let queryRef = collection(this.firestore, 'courses') as any;
-  
+
     if (filters.faculty) {
       queryRef = query(queryRef, where('faculty', '==', filters.faculty.toLowerCase()));
     }
@@ -46,7 +49,7 @@ export class CoursesService {
     if (filters.language) {
       queryRef = query(queryRef, where('language', '==', filters.language.toLowerCase()));
     }
-  
+
     collectionData(queryRef, { idField: 'id'}).subscribe(filteredCourses => {
       if (filters.name) {
         const searchTerm = filters.name.toLowerCase();
@@ -55,5 +58,19 @@ export class CoursesService {
       this.coursesSubject.next(filteredCourses);
     });
   }
-  
+
+  updateCoursesWithFavorites(showFavoritesOnly: boolean): void {
+    if (showFavoritesOnly) {
+      this.favoritesService.getFavoriteCourses().subscribe((favoriteCourses) => {
+        const favoriteCourseIds = favoriteCourses.map((favCourse: any) => favCourse.course);
+        this.coursesSubject.pipe(take(1)).subscribe((courses) => {
+          const filteredCourses = courses.filter((course) => favoriteCourseIds.includes(course.id));
+          this.coursesSubject.next(filteredCourses);
+        });
+      });
+    } else {
+      this.updateCourses();
+    }
+  }
+
 }

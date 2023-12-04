@@ -1,6 +1,6 @@
 <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="favoriteFilter" checked>
-    <label class="form-check-label" for="favoriteFilter">
-      Favorites Only
-    </label>
-  </div>
+  <input class="form-check-input" type="checkbox" value="" id="favoriteFilter" (change)="onFilterChange($event)" [checked]="showFavoritesOnly">
+  <label class="form-check-label" for="favoriteFilter">
+    Favorites Only
+  </label>
+</div>
