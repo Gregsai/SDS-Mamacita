@@ -28,7 +28,7 @@
     justify-content: space-between;
   }
   .popup-buttons > .btn{
-    width: 100%;
+    width: 33%;
   }
   .popup.active {
     opacity: 1;
