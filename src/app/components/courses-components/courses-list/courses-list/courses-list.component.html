@@ -32,7 +32,7 @@
             <img [src]="isCourseFavorited(course.id) ? './../../assets/images/full-heart.png' : './../../assets/images/empty-heart.png'" alt="heart" width="15px">
           </button>
 
-          <button (click)="copyItemToTable(course)" class="btn btn-primary">Add this course to Favorites</button>
+          <!--<button (click)="copyItemToTable(course)" class="btn btn-primary">Add this course to Favorites</button>-->
 
           <div class="popup" [ngClass]="{ active: showDeleteConfirmation }">
             <p>Are you sure you want to delete this course?</p>

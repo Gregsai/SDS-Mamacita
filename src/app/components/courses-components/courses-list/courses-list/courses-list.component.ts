@@ -48,14 +48,14 @@ export class CoursesListComponent implements OnInit {
     this.courseIdToDelete = null;
     this.showDeleteConfirmation = false; // Cacher la confirmation
   }
-
+  /*
   copyItemToTable(item: any): void {
     this.createlaService.copyItemToTable('courses', 'tablelafavorites', item)
       .then(() => {
         // Additional logic after copying item to Table 1
       });
   }
-
+  */
   getStatus(): void {
     if (this.isLoggedIn) {
       this.status = this.userService.getStatus();
