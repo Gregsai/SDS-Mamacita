@@ -11,7 +11,7 @@
     width: 100%;
 }
 #main-menu a{
-    background-color: rgba(20, 29, 56, 0.8); 
+    background-color: rgba(20, 29, 56, 0.8);
     color: white;
     height: 35%;
     width: 35%;
@@ -49,4 +49,7 @@ p{
     font-size: 70px;
     font-weight: bold;
     color: #E5E5E5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
