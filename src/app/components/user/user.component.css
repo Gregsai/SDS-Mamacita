@@ -37,3 +37,7 @@
   background-color: #FCA311;
   border-color: #FCA311;
 }
+
+button img{
+  width: 20px;
+}
