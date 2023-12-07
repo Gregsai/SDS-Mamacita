@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./la-courses-table.component.css']
 })
 export class LaCoursesTableComponent {
+  /*//old functions
   tableLaCourses: Observable<any[]> | undefined;
 
   constructor(private createlaService: CreatelaService) {}
@@ -23,4 +24,5 @@ export class LaCoursesTableComponent {
         // Additional logic after moving item to Table 2
       });
   }
+  */
 }

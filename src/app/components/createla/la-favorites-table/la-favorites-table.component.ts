@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./la-favorites-table.component.css']
 })
 export class LaFavoritesTableComponent {
+  /*//old functions
   tableLaFavorites: Observable<any[]> | undefined;
 
   constructor(private createlaService: CreatelaService) {}
@@ -21,5 +22,14 @@ export class LaFavoritesTableComponent {
       .then(() => {
         // Additional logic after moving item to Table 1
       });
+  }
+  //old functions
+  */
+  favoriteCourses$ = this.createlaService.getFavoritesTable();
+
+  constructor(private createlaService: CreatelaService) {}
+
+  ngOnInit() {
+    // You can perform additional initializations here if needed
   }
 }
