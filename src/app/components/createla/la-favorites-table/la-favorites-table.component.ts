@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CreatelaService } from 'src/app/services/createla.service';
 import { FavoritesService } from 'src/app/services/favorites.service';
+import { UserService } from 'src/app/services/user.service';
 import { Observable } from 'rxjs';
 
 
@@ -28,11 +29,12 @@ export class LaFavoritesTableComponent {
   //old functions
   */
   favoriteCourses$ = this.createlaService.getFavoritesTable();
+  isLoggedIn: boolean = false;
 
-  constructor(private createlaService: CreatelaService, private favoritesService: FavoritesService) {}
+  constructor(private createlaService: CreatelaService, private favoritesService: FavoritesService, private userService: UserService) {}
 
   ngOnInit() {
-    // You can perform additional initializations here if needed
+    this.isLoggedIn = this.userService.isLoggedIn();
   }
   /////!!!!!!!!!DUPLICATE courses-list.component!!!!!!!!!!!!!!!!!!!!!!!
   toggleFavorite(courseId: string) {
