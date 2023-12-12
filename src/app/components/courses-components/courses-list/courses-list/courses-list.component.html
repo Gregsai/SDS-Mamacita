@@ -1,5 +1,5 @@
-<div>
-  <table [ngClass]="{ '': isLoggedIn, 'table-logout': !isLoggedIn }" class="table table-bordered table-striped table-hover table-secondary">
+<div id ="course-list" [ngClass]="{ '': isLoggedIn, 'table-logout': !isLoggedIn }">
+  <table class="table table-bordered table-striped table-hover table-secondary">
     <thead>
       <tr>
         <th>Name</th>
@@ -12,7 +12,6 @@
       </tr>
     </thead>
     <tbody>
-      <tr></tr>
       <tr *ngFor="let course of courses$ | async">
         <td class="course-name">
           <input type="checkbox" [(ngModel)]="course.selected" />

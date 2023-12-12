@@ -49,3 +49,8 @@
   padding: 0;
   width: 23px;
 }
+
+#course-list{
+  max-height: 75vh;
+  overflow-y: auto;
+}
