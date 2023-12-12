@@ -70,9 +70,10 @@ export class CoursesListComponent implements OnInit {
           const img = button.querySelector('img');
           if (img) {
             const imgSrc = img.getAttribute('src');
-            const newImgSrc = imgSrc === './../../assets/images/empty-heart.png'
-              ? './../../assets/images/full-heart.png'
-              : './../../assets/images/empty-heart.png';
+            console.log("hey");
+            const newImgSrc = imgSrc === './../../assets/images/heart-official.png'
+              ? './../../assets/images/full-heart-official.png'
+              : './../../assets/images/heart-official.png';
             img.setAttribute('src', newImgSrc);
           }
         }
