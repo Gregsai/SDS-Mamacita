@@ -14,3 +14,12 @@
   padding: 0;
   width: 23px;
 }
+
+#up-arrow{
+padding-inline: 2px;
+}
+
+#up-arrow img{
+  padding: 0;
+  width: 23px;
+}
