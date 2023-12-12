@@ -46,11 +46,31 @@
 }
 
 #favorite-icon img{
-  padding: 0;
+  padding-inline: 0;
   width: 23px;
 }
 
 #course-list{
   max-height: 75vh;
   overflow-y: auto;
+}
+
+#add-to-icon{
+  padding: 0;
+  margin-left: 10px;
+}
+
+#add-to-icon img{
+  padding: 0;
+  width: 23px;
+}
+
+#delete-icon{
+  padding: 0;
+  margin-left: 10px;
+}
+
+#delete-icon img{
+  padding: 2px;
+  width: 23px;
 }
