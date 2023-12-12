@@ -1,33 +1,3 @@
-<!-- old functions
-  <table class="table table-bordered table-striped table-hover table-secondary">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Code</th>
-        <th>Faculty</th>
-        <th>ECTS</th>
-        <th>Semester</th>
-        <th>Language</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr></tr>
-      <tr *ngFor="let course of tableLaFavorites | async">
-        <td class="course-name">
-          <a href="{{ course.link }}">{{ course.name }}</a>
-        </td>
-        <td>{{ course.code }}</td>
-        <td>{{ course.faculty }}</td>
-        <td>{{ course.ects }}</td>
-        <td>{{ course.semester }}</td>
-        <td>{{ course.language }}</td>
-        <td><button (click)="moveItemToTable1(course)" class="btn btn-primary">Select this course</button></td>
-      </tr>
-    </tbody>
-  </table>
--->
-
 <!-- fav-courses.component.html -->
 <div *ngIf="isLoggedIn">
   <table *ngIf="(favoriteCourses$ | async)?.length"
@@ -35,8 +5,6 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>Code</th>
-        <th>Faculty</th>
         <th>ECTS</th>
         <th>Semester</th>
         <th>Language</th>
@@ -48,8 +16,6 @@
         <td class="course-name">
           <a href="{{ course.link }}">{{ course.name }}</a>
         </td>
-        <td>{{ course.code }}</td>
-        <td>{{ course.faculty }}</td>
         <td>{{ course.ects }}</td>
         <td>{{ course.semester }}</td>
         <td>{{ course.language }}</td>
