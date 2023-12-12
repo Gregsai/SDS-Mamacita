@@ -28,7 +28,7 @@
             <img src="./../../assets/images/white-trash.png" alt="trash" width="15px">
           </button>
 
-          <button class="btn" (click)="toggleFavorite(course.id)" [attr.data-course-id]="course.id">
+          <button id = "favorite-icon" class="btn" (click)="toggleFavorite(course.id)" [attr.data-course-id]="course.id">
             <img [src]="isCourseFavorited(course.id) ? './../../assets/images/full-heart-official.png' : './../../assets/images/heart-official.png'" alt="heart" width="15px">
           </button>
 

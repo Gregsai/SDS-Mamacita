@@ -38,3 +38,14 @@
   opacity: 1;
   visibility: visible;
 }
+
+
+#favorite-icon{
+  padding: 0;
+  margin-left: 10px;
+}
+
+#favorite-icon img{
+  padding: 0;
+  width: 23px;
+}
