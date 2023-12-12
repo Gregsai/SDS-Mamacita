@@ -21,7 +21,7 @@
         <td>{{ course.language }}</td>
         <td style="display: flex; align-items: center;">
           <button class="btn btn-primary" style="margin-right: 10px;">Select this course</button>
-          <button class="btn" (click)="toggleFavorite(course.id)" [attr.data-course-id]="course.id">
+          <button id = "favorite-icon" class="btn" (click)="toggleFavorite(course.id)" [attr.data-course-id]="course.id">
             <img
               [src]="isCourseFavorited(course.id) ? './../../assets/images/full-heart-official.png' : './../../assets/images/heart-official.png'"
               alt="heart" width="15px">
