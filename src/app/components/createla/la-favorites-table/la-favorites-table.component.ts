@@ -28,7 +28,7 @@ export class LaFavoritesTableComponent {
   }
   //old functions
   */
-  favoriteCourses$ = this.createlaService.getFavoritesTable();
+  favoriteCourses$ = this.favoritesService.favoritesList$;
   isLoggedIn: boolean = false;
 
   constructor(private createlaService: CreatelaService, private favoritesService: FavoritesService, private userService: UserService) {}
@@ -51,7 +51,7 @@ export class LaFavoritesTableComponent {
             img.setAttribute('src', newImgSrc);
           }
 
-        } 
+        }
       })
       .catch((error) => {
         // Manage error

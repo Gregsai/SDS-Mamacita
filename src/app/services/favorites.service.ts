@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, doc, setDoc, getDoc, deleteDoc, getDocs } from '@angular/fire/firestore';
-import { BehaviorSubject, Observable , of} from 'rxjs';
+import { Firestore, collection, doc, setDoc, getDoc, deleteDoc, getDocs, collectionData } from '@angular/fire/firestore';
+import { BehaviorSubject, Observable , of, combineLatest} from 'rxjs';
 import { UserService } from './user.service';
+import { map, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,12 +10,23 @@ import { UserService } from './user.service';
 export class FavoritesService {
   private favoritesSubject = new BehaviorSubject<any[]>([]);
   favorites$: Observable<any[]> = this.favoritesSubject.asObservable();
+  favoritesList$: Observable<any[]>;
 
   constructor(
     private userService: UserService,
     private firestore: Firestore
   ) {
     this.updateFavorites();
+    this.favoritesList$ = combineLatest([this.favoritesSubject, this.getFavoritesTable()]).pipe(
+      map(([favorites, favoriteCourses]) => {
+        // Combine or manipulate the favorites and favoriteCourses as needed
+        const mergedFavorites = favorites.map((fav: any) => {
+          const foundCourse = favoriteCourses.find((course: any) => course.id === fav.course);
+          return { ...fav, ...foundCourse };
+        });
+        return mergedFavorites;
+      })
+    );
   }
 
   updateFavorites(): void {
@@ -106,5 +118,29 @@ export class FavoritesService {
     } else {
       console.error('User id could not be found');
     }
+  }
+
+  getCollectionData(collectionName: string): Observable<any[]> {
+    return collectionData(collection(this.firestore, collectionName), { idField: 'id' });
+  }
+  getFavoritesTable(): Observable<any[]> {
+    return this.getFavoriteCourses().pipe(
+      map((favoriteCourses) => {
+        const favoriteCourseIds = favoriteCourses.map((favCourse: any) => favCourse.course);
+        return favoriteCourseIds;
+      }),
+      switchMap((ids) => {
+        if (ids.length === 0) {
+          return of([]); // Tableau vide ou Observable s'il n'y a pas d'identifiants de cours favoris
+        } else {
+          // Utilisation de getCollectionData pour récupérer les cours en fonction des identifiants
+          return this.getCollectionData('courses').pipe(
+            map((courses: any[]) => {
+              return courses.filter((course) => ids.includes(course.id));
+            })
+          );
+        }
+      })
+    );
   }
 }
