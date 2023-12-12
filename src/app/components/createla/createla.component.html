@@ -1,9 +1,16 @@
 <div id="root-createla">
-    <div id="main-content">
+    <div *ngIf="!isLoggedIn" id="main-content">
+        <div style="text-align: center; margin: auto; width: 50%;">
+            <h1>Please login or sign in to start a Learning Agreement template</h1>
+        </div>
+
+    </div>
+    <div *ngIf="isLoggedIn" id="main-content">
         <div style="background-color: #CCCCCC; padding: 20px;" id="left-toolBar">
 
             <h2>Learning Agreements</h2>
-
+            <app-la-list-menu></app-la-list-menu>
+            
         </div>
         <div id="main-interface">
             <div class="container mt-5">
