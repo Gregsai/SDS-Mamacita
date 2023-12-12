@@ -24,7 +24,7 @@ export class CreatelaService {
   //get list of LA
   //remove course from LA
   //remove course from favorites courses
-  
+
   //Get favorites table
   //recupère la liste des cours favoris
 
@@ -52,7 +52,7 @@ export class CreatelaService {
 
 
   //old functions
-  
+
   /*
   moveItemToTable(source: string, destination: string, item: any): Promise<void> {
     const sourceDocRef = doc(this.firestore, `${source}/${item.id}`);
@@ -66,7 +66,7 @@ export class CreatelaService {
     return this.addDocument(destination, item) // Add to destination
       .then(() => undefined); // Ensure the final return type is Promise<void>
   }
-  
+
 
   addDocument(collectionName: string, data: object): Promise<DocumentReference<DocumentData>> {
     return addDoc(collection(this.firestore, collectionName), data);
@@ -77,7 +77,7 @@ export class CreatelaService {
     return deleteDoc(docRef);
   }
   */
-  //end of old functions 
+  //end of old functions
 
 
 
