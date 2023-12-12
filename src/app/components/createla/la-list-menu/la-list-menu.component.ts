@@ -21,4 +21,9 @@ export class LaListMenuComponent {
     this.isLoggedIn = this.userService.isLoggedIn();
     this.las$ = this.learningagreementService.las$;
   }
+
+  chooseCurrentLa(LaId: string): void {
+    this.learningagreementService.setCurrentLaId(LaId);
+    this.learningagreementService.updateLa();
+  }
 }
