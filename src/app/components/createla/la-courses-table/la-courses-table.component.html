@@ -19,7 +19,11 @@
           <td>{{ course.ects }}</td>
           <td>{{ course.semester }}</td>
           <td>{{ course.language }}</td>
-          <td><button class="btn btn-primary">Remove this course</button></td>
+          <td style="display: flex; align-items: center;">
+            <button class="btn btn-primary" (click)="removeLaCourseDocument(course.id)">
+              Delete this course
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>

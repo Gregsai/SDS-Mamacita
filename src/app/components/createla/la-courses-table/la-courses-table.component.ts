@@ -37,4 +37,8 @@ export class LaCoursesTableComponent {
     this.lacourses$ = this.learningagreementService.lacourses$;
     this.lacourseslist$ = this.learningagreementService.lacourseslist$;
   }
+
+  removeLaCourseDocument(courseId: string) {
+    this.learningagreementService.removeLaCourseDocument(courseId);
+  }
 }
