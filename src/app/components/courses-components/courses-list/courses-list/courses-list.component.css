@@ -51,6 +51,7 @@
 }
 
 #course-list{
+  min-height: 50vh;
   max-height: 75vh;
   overflow-y: auto;
 }
@@ -73,4 +74,59 @@
 #delete-icon img{
   padding: 2px;
   width: 23px;
+}
+
+.dropdown {
+  position:static;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: 130px;
+  max-height: 300px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  overflow-y: auto;
+  border: solid 1px #14213d;
+  border-radius: 20px;
+}
+
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show .dropdown-content {
+  display: block;
+  position: absolute !important;
+}
+.dropdown-content.show {
+  display: block;
+}
+.dropdown-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+  background:transparent;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border: solid 1px #14213d;
+  border-radius: 30px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
