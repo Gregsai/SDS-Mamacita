@@ -25,5 +25,6 @@ export class LaListMenuComponent {
   chooseCurrentLa(LaId: string): void {
     this.learningagreementService.setCurrentLaId(LaId);
     this.learningagreementService.updateLa();
+    this.learningagreementService.updateLaCourses();
   }
 }

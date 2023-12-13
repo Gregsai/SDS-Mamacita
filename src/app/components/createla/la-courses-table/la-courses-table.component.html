@@ -1,11 +1,9 @@
-<!--
+
   
     <table class="table table-bordered table-striped table-hover table-secondary">
       <thead>
         <tr>
           <th>Name</th>
-          <th>Code</th>
-          <th>Faculty</th>
           <th>ECTS</th>
           <th>Semester</th>
           <th>Language</th>
@@ -14,12 +12,10 @@
       </thead>
       <tbody>
         <tr></tr>
-        <tr *ngFor="let course of tableLaCourses | async">
+        <tr *ngFor="let course of lacourseslist$ | async">
           <td class="course-name">
             <a href="{{ course.link }}">{{ course.name }}</a>
           </td>
-          <td>{{ course.code }}</td>
-          <td>{{ course.faculty }}</td>
           <td>{{ course.ects }}</td>
           <td>{{ course.semester }}</td>
           <td>{{ course.language }}</td>
@@ -27,6 +23,5 @@
         </tr>
       </tbody>
     </table>
-  -->
   
   

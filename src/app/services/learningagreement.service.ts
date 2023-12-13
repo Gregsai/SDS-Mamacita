@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, doc, setDoc, getDoc, deleteDoc, getDocs, DocumentData } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, query, setDoc, getDoc, deleteDoc, getDocs, DocumentData, where } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable, of, from } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { UserService } from './user.service';
@@ -12,6 +12,12 @@ export class LearningagreementService {
   private lasSubject = new BehaviorSubject<any[]>([]);
   las$: Observable<any[]> = this.lasSubject.asObservable();
 
+  private lacoursesSubject = new BehaviorSubject<any[]>([]);
+  lacourses$: Observable<any[]> = this.lacoursesSubject.asObservable();
+
+  private lacoursesListSubject = new BehaviorSubject<any[]>([]);
+  lacourseslist$: Observable<any[]> = this.lacoursesListSubject.asObservable();
+
   private laSubject = new BehaviorSubject<DocumentData | null>(null);
   la$: Observable<DocumentData | null> = this.laSubject.asObservable();
 
@@ -22,6 +28,7 @@ export class LearningagreementService {
     private firestore: Firestore) {
     this.updateLas();
     this.updateLa();
+    this.updateLaCourses();
   }
 
   setCurrentLaId(currentLaId: string): void {
@@ -50,6 +57,7 @@ export class LearningagreementService {
       this.lasSubject.next(LearningAgreements);
     });
   }
+
 
   getlearningAgreement(): Observable<DocumentData | null> {
     const userId = this.userService.getUserId();
@@ -89,7 +97,48 @@ export class LearningagreementService {
       this.laSubject.next(learningAgreement);
     });
   }
-  
+
+  getlearningAgreementCourses(): Observable<any[]> {
+    const userId = this.userService.getUserId();
+
+    if (!userId) {
+      console.error('Could not find any user ids');
+      return of([]);
+    }
+
+    const collectionName = `Lalisttest/${userId}/LearningAgreements/${this.currentLaId}/courses`;
+
+    return this.getCollectionData(collectionName);
+  }
+
+  updateLaCourses(): void {
+    this.getlearningAgreementCourses().subscribe(LearningAgreementCourses => {
+      this.lacoursesSubject.next(LearningAgreementCourses);
+
+      this.updateLaCoursesList();
+    });
+  }
+
+  updateLaCoursesList(): void {
+    this.lacourses$
+      .pipe(
+        switchMap(lacourses => {
+          const courseIds = lacourses.map(course => course.course_id);
+
+          if (courseIds.length === 0) {
+            return of([]); // Empty array or Observable if there are no course_ids
+          } else {
+            // Fetch courses from Firestore based on course_id
+            const coursesCollection = collection(this.firestore, 'courses');
+            const queryz = query(coursesCollection, where('__name__', 'in', courseIds)); // Use '__name__' to filter by document ID
+            return collectionData(queryz, { idField: 'id' });
+          }
+        })
+      )
+      .subscribe(coursesList => {
+        this.lacoursesListSubject.next(coursesList);
+      });
+  }
 
   getCollectionData(collectionName: string): Observable<any[]> {
     return collectionData(collection(this.firestore, collectionName), { idField: 'id' });
