@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CreatelaService } from 'src/app/services/createla.service';
 import { FavoritesService } from 'src/app/services/favorites.service';
 import { UserService } from 'src/app/services/user.service';
+import { LearningagreementService } from 'src/app/services/learningagreement.service';
 import { Observable } from 'rxjs';
 
 
@@ -31,7 +32,7 @@ export class LaFavoritesTableComponent {
   favoriteCourses$ = this.favoritesService.favoritesList$;
   isLoggedIn: boolean = false;
 
-  constructor(private createlaService: CreatelaService, private favoritesService: FavoritesService, private userService: UserService) {}
+  constructor(private learningAgreementService: LearningagreementService, private favoritesService: FavoritesService, private userService: UserService) {}
 
   ngOnInit() {
     this.isLoggedIn = this.userService.isLoggedIn();
@@ -67,6 +68,10 @@ export class LaFavoritesTableComponent {
     });
 
     return isFavorited;
+  }
+
+  createLaCourseDocument(courseId: string) {
+    this.learningAgreementService.createLaCourseDocument(courseId);
   }
 
 }
