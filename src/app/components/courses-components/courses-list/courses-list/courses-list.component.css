@@ -42,7 +42,6 @@
 
 #favorite-icon{
   padding: 0;
-  margin-left: 10px;
 }
 
 #favorite-icon img{
@@ -130,4 +129,10 @@
 
 .dropdown-content::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+#action-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

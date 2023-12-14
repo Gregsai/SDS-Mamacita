@@ -19,7 +19,7 @@
         <td>{{ course.ects }}</td>
         <td>{{ course.semester }}</td>
         <td>{{ course.language }}</td>
-        <td style="display: flex; align-items: center;">
+        <td id = "action-buttons" style="display: flex; align-items: center;">
           <button id = "up-arrow" class="btn btn-primary" (click)="createLaCourseDocument(course.id)">
             <img src="./../../assets/images/arrow.png" alt="heart">
           </button>

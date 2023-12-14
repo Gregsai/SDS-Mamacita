@@ -25,3 +25,9 @@ margin-left: 10px;
   width: 23px;
 
 }
+
+#action-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
