@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UserService } from 'src/app/services/user.service';
 import { LearningagreementService } from 'src/app/services/learningagreement.service';
+import { FavoritesService } from 'src/app/services/favorites.service';
 
 @Component({
   selector: 'app-la-list-menu',
@@ -11,10 +12,13 @@ import { LearningagreementService } from 'src/app/services/learningagreement.ser
 export class LaListMenuComponent {
   isLoggedIn: boolean = false;
   las$: Observable<any[]> | undefined;
+  showInput = false;
+  laName = '';
 
   constructor(
     private learningagreementService: LearningagreementService,
-    private userService: UserService
+    private userService: UserService,
+    private favoriteservice: FavoritesService
   ) { }
 
   ngOnInit(): void {
@@ -25,6 +29,30 @@ export class LaListMenuComponent {
   chooseCurrentLa(LaId: string): void {
     this.learningagreementService.setCurrentLaId(LaId);
     this.learningagreementService.updateLa();
-    this.learningagreementService.updateLaCourses();
+  }
+
+  toggleInput(): void {
+    this.showInput = !this.showInput;
+    if (!this.showInput) {
+      this.laName = ''; // Reset the input field when hiding
+    }
+  }
+
+  createLaDocument(): void {
+    if (this.laName.trim() !== '') {
+      this.learningagreementService.createLaDocument(this.laName);
+      this.showInput = false;
+      this.laName = ''; // Reset the input field after creating La document
+    }
+  }
+
+  removeLa(laId: string): void {
+    this.learningagreementService.removeLaDocument(laId)
+      .then(() => {
+      })
+      .catch(error => {
+        // Handle errors
+        console.error('Error while removing Learning Agreement document', error);
+      });
   }
 }

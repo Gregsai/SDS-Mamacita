@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, doc, query, setDoc, getDoc, deleteDoc, getDocs, DocumentData, where } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, query, setDoc, getDoc, deleteDoc, getDocs, DocumentData, where, addDoc, updateDoc } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable, of, from } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { UserService } from './user.service';
@@ -201,8 +201,38 @@ export class LearningagreementService {
       throw error;
     }
   }
-/*
+
   async createLaDocument(LaName: string): Promise<void> {
+    const userId = this.userService.getUserId();
+  
+    if (!userId) {
+      console.error('User ID is null or undefined');
+      // Handle the error or return early
+      return;
+    }
+  
+    try {
+      const userLaRef = collection(this.firestore, 'Lalisttest', userId, 'LearningAgreements');
+      
+      // Use addDoc instead of setDoc
+      const courseDocRef = await addDoc(userLaRef, {
+        user_id: userId,
+        la_id: '', // leave it empty for now
+        name: LaName,
+      });
+  
+      // Set the la_id field with the document ID
+      await updateDoc(courseDocRef, { la_id: courseDocRef.id });
+  
+      this.updateLa();
+      console.log('La document successfully created with ID:', courseDocRef.id);
+    } catch (error) {
+      console.error('Error occurred while creating La document', error);
+      throw error;
+    }
+  }
+
+  async removeLaDocument(laId: string): Promise<void> {
     const userId = this.userService.getUserId();
 
     if (!userId) {
@@ -213,20 +243,20 @@ export class LearningagreementService {
 
     try {
       const userLaRef = collection(this.firestore, 'Lalisttest', userId, 'LearningAgreements');
-      const courseDocRef = doc(userLaRef, [random_id]);
-      
-      await setDoc(courseDocRef, {
-        user_id: userId,
-        la_id: [random_id],
-        name: LaName,
-      });
-      this.updateLa();
-      console.log('La document successfully created');
+      const laDocRef = doc(userLaRef, laId);
+
+      await deleteDoc(laDocRef);
+      console.log('Learning Agreement document successfully removed');
+
+      if (this.currentLaId==laId) {
+        this.currentLaId = null;
+      }
     } catch (error) {
-      console.error('Error occured whil creating La document', error);
+      console.error('Error occurred while removing Learning Agreement document', error);
       throw error;
     }
   }
-  */
+  
+  
 
 }

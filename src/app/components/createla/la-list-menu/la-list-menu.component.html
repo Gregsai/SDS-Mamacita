@@ -1,6 +1,19 @@
 <div class="list-group">
-   <!-- <a href="#" class="list-group-item list-group-item-action active">Dapibus ac facilisis in</a> -->
-    <a *ngFor="let la of las$ | async" (click)="chooseCurrentLa(la.id)" class="list-group-item list-group-item-action">
-        {{ la.name }}
-    </a>
+  <!-- <a href="#" class="list-group-item list-group-item-action active">Dapibus ac facilisis in</a> -->
+  <a *ngFor="let la of las$ | async" (click)="chooseCurrentLa(la.id)" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+    <span>{{ la.name }}</span>
+    <button (click)="removeLa(la.id)" class="btn btn-danger" aria-label="Remove">
+      &times;
+    </button>
+  </a>
+  
+  
+  
+  
+  <button (click)="toggleInput()">Create Learning Agreement</button>
+  <div *ngIf="showInput">
+    <input type="text" placeholder="Enter Learning Agreement Name" [(ngModel)]="laName"
+      (keyup.enter)="createLaDocument()" />
+    <button (click)="createLaDocument()">Create</button>
   </div>
+</div>
