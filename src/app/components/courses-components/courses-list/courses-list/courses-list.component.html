@@ -28,15 +28,7 @@
             <img [src]="isCourseFavorited(course.id) ? './../../assets/images/full-heart-official.png' : './../../assets/images/heart-official.png'" alt="heart" width="15px">
           </button>
 
-          <div class="dropdown" [class.show]="course.isDropdownOpen">
-            <button (click)="toggleDropdown(course.id)" id="add-to-icon" class="btn">
-              <img src="./../../assets/images/add-to-icon-v2.png" alt="trash" width="15px">
-            </button>
-            <div *ngIf="course.isDropdownOpen" class="dropdown-content">
-              <a href="#">Learning Agreement 1</a>
-              <a href="#">Learning Agreement 2</a>
-            </div>
-          </div>
+
           <button *ngIf = "status === 'erasmusstudent'" class="btn btn-danger" id = "delete-icon" (click)="deleteCourses(course.id)">
             <img src="./../../assets/images/white-trash.png" alt="trash" width="15px">
           </button>
