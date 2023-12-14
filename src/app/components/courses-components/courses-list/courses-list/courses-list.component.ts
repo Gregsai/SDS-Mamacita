@@ -4,6 +4,7 @@ import { CoursesService } from '../../../../services/courses.service';
 import { CreatelaService } from 'src/app/services/createla.service';
 import { UserService } from 'src/app/services/user.service';
 import { FavoritesService } from 'src/app/services/favorites.service';
+import { LearningagreementService } from 'src/app/services/learningagreement.service';
 
 @Component({
   selector: 'app-courses-list',
@@ -18,12 +19,14 @@ export class CoursesListComponent implements OnInit {
   status: string = '';
   favorites$: Observable<any[]> | undefined;
   isDropdownOpen: boolean = false;
+  las$: Observable<any[]> | undefined;
+  showAddLaPopup: boolean = false;
 
   constructor(
     private coursesService: CoursesService,
-    private createlaService: CreatelaService,
     private userService: UserService,
     private favoritesService: FavoritesService,
+    private learningagreementService: LearningagreementService,
     ) {}
 
   ngOnInit(): void {
@@ -37,6 +40,7 @@ export class CoursesListComponent implements OnInit {
       });
     }
     this.favorites$ = this.favoritesService.favorites$
+    this.las$ = this.learningagreementService.las$;
     this.getStatus();
   }
 
@@ -138,4 +142,15 @@ export class CoursesListComponent implements OnInit {
     }
   }
 
+  addToLa(laId: string, courseId : string): void {
+    console.log(`adding course ${courseId} to la ${laId}`);
+    this.learningagreementService.addToLa(laId, courseId).then(() => {
+      this.toggleFavorite(courseId);
+      this.closeAllDropdowns();
+      this.showAddLaPopup = true;
+      setTimeout(() => {
+        this.showAddLaPopup = false;
+      }, 2000);
+    });
+  }
 }

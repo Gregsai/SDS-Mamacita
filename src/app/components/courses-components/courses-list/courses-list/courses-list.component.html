@@ -33,8 +33,12 @@
               <img src="./../../assets/images/add-to-icon-v2.png" alt="trash" width="15px">
             </button>
             <div *ngIf="course.isDropdownOpen" class="dropdown-content">
-              <a href="#">Learning Agreement 1</a>
-              <a href="#">Learning Agreement 2</a>
+              <a *ngFor="let la of las$ | async" (click)="addToLa(la.id, course.id)">
+                {{ la.name }}
+              </a>
+            </div>
+            <div class="addToLa-success alert alert-success" [ngClass]="{ active: showAddLaPopup }">
+              Course added successfully to the LA
             </div>
           </div>
           <button *ngIf = "status === 'erasmusstudent'" class="btn btn-danger" id = "delete-icon" (click)="deleteCourses(course.id)">
