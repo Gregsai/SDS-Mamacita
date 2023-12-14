@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, doc, setDoc, getDoc, deleteDoc, getDocs, collectionData } from '@angular/fire/firestore';
-import { BehaviorSubject, Observable , of, combineLatest} from 'rxjs';
+import { BehaviorSubject, Observable , of, combineLatest,forkJoin} from 'rxjs';
 import { UserService } from './user.service';
 import { map, switchMap } from 'rxjs/operators';
 
@@ -19,12 +19,18 @@ export class FavoritesService {
     this.updateFavorites();
     this.favoritesList$ = combineLatest([this.favoritesSubject, this.getFavoritesTable()]).pipe(
       map(([favorites, favoriteCourses]) => {
-        // Combine or manipulate the favorites and favoriteCourses as needed
-        const mergedFavorites = favorites.map((fav: any) => {
+        const coursesInFavoritesTable = favoriteCourses.map((course: any) => course.id);
+
+        const coursesInBoth = favorites.filter((fav: any) =>
+          coursesInFavoritesTable.includes(fav.course)
+        );
+
+        const mergedCourses = coursesInBoth.map((fav: any) => {
           const foundCourse = favoriteCourses.find((course: any) => course.id === fav.course);
           return { ...fav, ...foundCourse };
         });
-        return mergedFavorites;
+
+        return mergedCourses;
       })
     );
   }
@@ -123,20 +129,18 @@ export class FavoritesService {
   getCollectionData(collectionName: string): Observable<any[]> {
     return collectionData(collection(this.firestore, collectionName), { idField: 'id' });
   }
+
   getFavoritesTable(): Observable<any[]> {
     return this.getFavoriteCourses().pipe(
-      map((favoriteCourses) => {
-        const favoriteCourseIds = favoriteCourses.map((favCourse: any) => favCourse.course);
-        return favoriteCourseIds;
-      }),
-      switchMap((ids) => {
-        if (ids.length === 0) {
-          return of([]); // Tableau vide ou Observable s'il n'y a pas d'identifiants de cours favoris
+      map((favoriteCourses) => favoriteCourses.map((favCourse: any) => favCourse.course)),
+      switchMap((favorites: any[]) => {
+        if (favorites.length === 0) {
+          return [];
         } else {
-          // Utilisation de getCollectionData pour récupérer les cours en fonction des identifiants
           return this.getCollectionData('courses').pipe(
             map((courses: any[]) => {
-              return courses.filter((course) => ids.includes(course.id));
+              console.log(courses.filter((course) => favorites.includes(course.id)));
+              return courses.filter((course) => favorites.includes(course.id));
             })
           );
         }

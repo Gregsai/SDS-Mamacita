@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CreatelaService } from 'src/app/services/createla.service';
 import { Observable } from 'rxjs';
-
+import { DocumentData } from '@angular/fire/firestore';
+import { LearningagreementService } from 'src/app/services/learningagreement.service';
 
 @Component({
   selector: 'app-la-courses-table',
@@ -25,4 +26,19 @@ export class LaCoursesTableComponent {
       });
   }
   */
+  lacourses$: Observable<any[]> | undefined;
+  lacourseslist$: Observable<any[]> | undefined;
+
+  constructor(
+    private learningagreementService: LearningagreementService
+  ) { }
+
+  ngOnInit(): void {
+    this.lacourses$ = this.learningagreementService.lacourses$;
+    this.lacourseslist$ = this.learningagreementService.lacourseslist$;
+  }
+
+  removeLaCourseDocument(courseId: string) {
+    this.learningagreementService.removeLaCourseDocument(courseId);
+  }
 }

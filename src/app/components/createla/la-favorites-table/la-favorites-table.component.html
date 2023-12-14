@@ -19,8 +19,8 @@
         <td>{{ course.ects }}</td>
         <td>{{ course.semester }}</td>
         <td>{{ course.language }}</td>
-        <td style="display: flex; align-items: center;">
-          <button id = "up-arrow" class="btn btn-primary">
+        <td id = "action-buttons" style="display: flex; align-items: center;">
+          <button id = "up-arrow" class="btn btn-primary" (click)="createLaCourseDocument(course.id)">
             <img src="./../../assets/images/arrow.png" alt="heart">
           </button>
           <button id = "favorite-icon" class="btn" (click)="toggleFavorite(course.id)" [attr.data-course-id]="course.id">

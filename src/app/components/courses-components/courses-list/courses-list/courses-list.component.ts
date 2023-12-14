@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CoursesService } from '../../../../services/courses.service';
 import { CreatelaService } from 'src/app/services/createla.service';
@@ -17,6 +17,7 @@ export class CoursesListComponent implements OnInit {
   isLoggedIn: boolean = false;
   status: string = '';
   favorites$: Observable<any[]> | undefined;
+  isDropdownOpen: boolean = false;
 
   constructor(
     private coursesService: CoursesService,
@@ -28,8 +29,23 @@ export class CoursesListComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn = this.userService.isLoggedIn();
     this.courses$ = this.coursesService.courses$;
+    if (this.courses$) {
+      this.courses$.subscribe((courses) => {
+        courses.forEach((course) => {
+          course.isDropdownOpen = false; // Initialisez la propriété isDropdownOpen pour chaque élément course
+        });
+      });
+    }
     this.favorites$ = this.favoritesService.favorites$
     this.getStatus();
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClick(event: MouseEvent) {
+    const clickedInsideDropdown = this.isClickInsideDropdown(event);
+    if (!clickedInsideDropdown) {
+      this.closeAllDropdowns();
+    }
   }
 
   deleteCourses(courseId: string) {
@@ -70,9 +86,9 @@ export class CoursesListComponent implements OnInit {
           const img = button.querySelector('img');
           if (img) {
             const imgSrc = img.getAttribute('src');
-            const newImgSrc = imgSrc === './../../assets/images/empty-heart.png'
-              ? './../../assets/images/full-heart.png'
-              : './../../assets/images/empty-heart.png';
+            const newImgSrc = imgSrc === './../../assets/images/heart-official.png'
+              ? './../../assets/images/full-heart-official.png'
+              : './../../assets/images/heart-official.png';
             img.setAttribute('src', newImgSrc);
           }
         }
@@ -91,4 +107,35 @@ export class CoursesListComponent implements OnInit {
 
     return isFavorited;
   }
+
+  toggleDropdown(courseId: string) {
+    if (this.courses$) {
+      this.courses$.subscribe((courses: any[]) => {
+        courses.forEach((course: any) => {
+          course.isDropdownOpen = course.id === courseId ? !course.isDropdownOpen : false;
+        });
+      });
+    }
+  }
+
+  isClickInsideDropdown(event: MouseEvent): boolean {
+    const elements = document.querySelectorAll('.dropdown, .dropdown-content');
+    for (let i = 0; i < elements.length; i++) {
+      if (elements[i].contains(event.target as Node)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  closeAllDropdowns(): void {
+    if (this.courses$) {
+      this.courses$.subscribe((courses: any[]) => {
+        courses.forEach((course: any) => {
+          course.isDropdownOpen = false;
+        });
+      });
+    }
+  }
+
 }

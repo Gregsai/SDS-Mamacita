@@ -1,8 +1,8 @@
 .btn-primary{
     background-color: #FCA311;
     border-color: #FCA311;
-    width: 100%;
 }
+
 
 
 #favorite-icon{
@@ -10,16 +10,24 @@
   margin-left: 10px;
 }
 
+
 #favorite-icon img{
   padding: 0;
   width: 23px;
 }
 
 #up-arrow{
-padding-inline: 2px;
+margin-left: 10px;
 }
 
 #up-arrow img{
   padding: 0;
   width: 23px;
+
+}
+
+#action-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }

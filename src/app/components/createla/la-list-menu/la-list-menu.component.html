@@ -1,6 +1,6 @@
 <div class="list-group">
    <!-- <a href="#" class="list-group-item list-group-item-action active">Dapibus ac facilisis in</a> -->
-    <a *ngFor="let la of las$ | async" href="#" class="list-group-item list-group-item-action">
-        {{ la.id }}
+    <a *ngFor="let la of las$ | async" (click)="chooseCurrentLa(la.id)" class="list-group-item list-group-item-action">
+        {{ la.name }}
     </a>
   </div>
