@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CoursesService } from '../../../../services/courses.service';
 import { CreatelaService } from 'src/app/services/createla.service';
@@ -38,6 +38,14 @@ export class CoursesListComponent implements OnInit {
     }
     this.favorites$ = this.favoritesService.favorites$
     this.getStatus();
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClick(event: MouseEvent) {
+    const clickedInsideDropdown = this.isClickInsideDropdown(event);
+    if (!clickedInsideDropdown) {
+      this.closeAllDropdowns();
+    }
   }
 
   deleteCourses(courseId: string) {
@@ -105,6 +113,26 @@ export class CoursesListComponent implements OnInit {
       this.courses$.subscribe((courses: any[]) => {
         courses.forEach((course: any) => {
           course.isDropdownOpen = course.id === courseId ? !course.isDropdownOpen : false;
+        });
+      });
+    }
+  }
+
+  isClickInsideDropdown(event: MouseEvent): boolean {
+    const elements = document.querySelectorAll('.dropdown, .dropdown-content');
+    for (let i = 0; i < elements.length; i++) {
+      if (elements[i].contains(event.target as Node)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  closeAllDropdowns(): void {
+    if (this.courses$) {
+      this.courses$.subscribe((courses: any[]) => {
+        courses.forEach((course: any) => {
+          course.isDropdownOpen = false;
         });
       });
     }
