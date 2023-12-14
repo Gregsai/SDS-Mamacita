@@ -1,7 +1,7 @@
-<div id="root-createla">
-    <div *ngIf="!isLoggedIn" id="main-content">
-        <div style="text-align: center; margin: auto; width: 50%;">
-            <h1>Please login or sign in to start a Learning Agreement template</h1>
+<div id="root-createla" [ngClass]="{'logged-out': !isLoggedIn}">
+  <div *ngIf="!isLoggedIn" id="main-content">
+        <div id = "login-message" style="text-align: center; margin: auto; width: 70%;">
+            <h1>Please login or sign in to access this section</h1>
         </div>
 
     </div>
@@ -10,14 +10,13 @@
 
             <h2>Learning Agreements</h2>
             <app-la-list-menu></app-la-list-menu>
-            
+
         </div>
         <div id="main-interface">
             <div class="container mt-5">
                 <div id="form-div">
                     <form>
                         <h1 style="margin-left:13px">Learning Agreement 1</h1>
-
                         <!--
                         <div style="margin: 13px;" class="card">
                             <div class="card-header">

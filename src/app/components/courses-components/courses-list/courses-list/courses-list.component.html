@@ -24,14 +24,20 @@
         <td>{{ course.language }}</td>
         <td *ngIf="isLoggedIn">
 
-          <button *ngIf = "status === 'erasmusstudent'" id = "favorite-icon" class="btn" (click)="toggleFavorite(course.id)" [attr.data-course-id]="course.id">
+          <button id = "favorite-icon" class="btn" (click)="toggleFavorite(course.id)" [attr.data-course-id]="course.id">
             <img [src]="isCourseFavorited(course.id) ? './../../assets/images/full-heart-official.png' : './../../assets/images/heart-official.png'" alt="heart" width="15px">
           </button>
 
-          <button *ngIf = "status === 'erasmusstudent'" id = "add-to-icon" class="btn">
-            <img src="./../../assets/images/add-to-icon.png" alt="trash" width="15px">
-          </button>
-
+          <div class="dropdown" [class.show]="course.isDropdownOpen">
+            <button (click)="toggleDropdown(course.id)" id="add-to-icon" class="btn">
+              <img src="./../../assets/images/add-to-icon-v2.png" alt="trash" width="15px">
+            </button>
+            <div *ngIf="course.isDropdownOpen" class="dropdown-content">
+              <a href="#">Learning Agreement 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
+          </div>
           <button *ngIf = "status === 'erasmusstudent'" class="btn btn-danger" id = "delete-icon" (click)="deleteCourses(course.id)">
             <img src="./../../assets/images/white-trash.png" alt="trash" width="15px">
           </button>

@@ -1,13 +1,15 @@
 .btn-primary{
     background-color: #FCA311;
     border-color: #FCA311;
-    width: 100%;
 }
+
 
 
 #favorite-icon{
   padding: 0;
+  margin-left: 10px;
 }
+
 
 #favorite-icon img{
   padding: 0;
@@ -15,9 +17,7 @@
 }
 
 #up-arrow{
-padding-inline: 2px;
 margin-left: 10px;
-
 }
 
 #up-arrow img{

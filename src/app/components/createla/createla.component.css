@@ -54,6 +54,7 @@
 #main-content{
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 
 #form-div{
@@ -67,8 +68,8 @@ table{
 
 .course-name *{
     display: inline-block;
-    vertical-align: middle; 
-    margin-right: 10px; 
+    vertical-align: middle;
+    margin-right: 10px;
 }
 
 #main-interface{
@@ -77,3 +78,18 @@ table{
     flex-direction: column;
 }
 
+
+#root-createla.logged-out {
+  background-image: url("../../../assets/images/backgroundSDS.jpg");
+  background-size: cover;
+}
+
+#login-message h1{
+  font-family: 'Be Vietnam Pro', sans-serif;
+  font-size: 70px;
+  font-weight: bold;
+  color: #E5E5E5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
