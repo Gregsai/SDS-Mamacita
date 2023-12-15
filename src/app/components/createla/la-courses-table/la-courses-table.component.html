@@ -1,5 +1,5 @@
 
-  
+
     <table class="table table-bordered table-striped table-hover table-secondary">
       <thead>
         <tr>
@@ -20,12 +20,11 @@
           <td>{{ course.semester }}</td>
           <td>{{ course.language }}</td>
           <td style="display: flex; align-items: center;">
-            <button class="btn btn-primary" (click)="removeLaCourseDocument(course.id)">
-              Delete this course
+            <button id = "down-arrow" class="btn btn-primary" (click)="removeLaCourseDocument(course.id)">
+              <img src="./../../assets/images/arrow.png" alt="arrow-down">
             </button>
           </td>
         </tr>
       </tbody>
     </table>
-  
-  
+
