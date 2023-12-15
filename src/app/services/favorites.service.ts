@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { Firestore, collection, doc, setDoc, getDoc, deleteDoc, getDocs, collectionData } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable , of, combineLatest,forkJoin} from 'rxjs';
 import { UserService } from './user.service';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, filter } from 'rxjs/operators';
+import { LearningagreementService } from './learningagreement.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class FavoritesService {
 
   constructor(
     private userService: UserService,
-    private firestore: Firestore
+    private firestore: Firestore,
+    private learningAgreementService: LearningagreementService
   ) {
     this.updateFavorites();
     this.favoritesList$ = combineLatest([this.favoritesSubject, this.getFavoritesTable()]).pipe(
@@ -33,6 +35,16 @@ export class FavoritesService {
         return mergedCourses;
       })
     );
+    this.favoritesList$ = combineLatest([this.favoritesList$, this.learningAgreementService.lacourseslist$]).pipe(
+      filter(([_favorites, lacourseslist]) => !!lacourseslist), // Filter out null or undefined lacourseslist
+      map(([favorites, lacourseslist]) => {
+        return favorites.filter(fav => !this.isCourseInList(lacourseslist, fav.id));
+      })
+    );
+  }
+
+  isCourseInList(courseList: any[], courseId: string): boolean {
+    return courseList.some(course => course.id === courseId);
   }
 
   updateFavorites(): void {

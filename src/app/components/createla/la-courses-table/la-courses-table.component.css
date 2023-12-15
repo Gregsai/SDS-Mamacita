@@ -1,5 +1,14 @@
-.btn-primary{
-    background-color: #FCA311;
-    border-color: #FCA311;
-    width: 100%;
+.btn-primary {
+  background-color: #FCA311;
+  border-color: #FCA311;
 }
+
+#down-arrow{
+  margin-left: 10px;
+  }
+
+  #down-arrow img{
+    padding: 0;
+    width: 23px;
+    transform: scaleY(-1);
+  }
