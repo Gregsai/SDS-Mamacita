@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { CoursesService } from 'src/app/services/courses.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-courses-add-course',
@@ -9,9 +10,20 @@ import { CoursesService } from 'src/app/services/courses.service';
 export class CoursesAddCourseComponent {
   newCourse: any = {};
   showPopup: boolean = false;
+  status: string = '';
+  isLoggedIn: boolean = false;
+
   @ViewChild('closeModal') closeModal!: ElementRef;
 
-  constructor(private coursesService: CoursesService) {}
+  constructor(
+    private coursesService: CoursesService,
+    private userService: UserService
+    ) {
+    this.isLoggedIn = this.userService.isLoggedIn();
+    if (this.isLoggedIn) {
+      this.status = this.userService.getStatus();
+    }
+  }
 
   addCourse(newCourse: any) {
     const data = {

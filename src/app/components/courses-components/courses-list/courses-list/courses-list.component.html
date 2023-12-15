@@ -54,7 +54,7 @@
               {{ showLaSuccess }}
             </div>
           </div>
-          <button *ngIf = "status === 'erasmusstudent'" class="btn btn-danger" id = "delete-icon" (click)="deleteCourses(course.id)">
+          <button *ngIf = "status === 'admin'" class="btn btn-danger" id = "delete-icon" (click)="deleteCourses(course.id)">
             <img src="./../../assets/images/white-trash.png" alt="trash" width="15px">
           </button>
           <!--<button (click)="copyItemToTable(course)" class="btn btn-primary">Add this course to Favorites</button>-->
