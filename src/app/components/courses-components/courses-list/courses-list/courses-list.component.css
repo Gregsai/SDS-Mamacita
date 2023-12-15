@@ -80,6 +80,8 @@
 }
 
 .dropdown-content {
+  padding-block: 5px;
+  padding-inline: 2px;
   display: none;
   position: absolute;
   background-color: #f1f1f1;
@@ -152,4 +154,26 @@
 .addToLa-success.active{
   opacity: 1;
   visibility: visible;
+}
+
+.create-la-input{
+  display: flex;
+  flex-direction: row;
+}
+
+.create-la-input input {
+  width: 90%;
+  border: 1px solid #ccc; /* Ajoute une bordure */
+  border-radius: 20px; /* Arrondit les coins */
+  background-color: transparent; /* Fond transparent */
+  padding: 5px; /* Ajoute un peu d'espacement intérieur */
+}
+
+.create-la-input button {
+  width: min-content;
+  border: 1px solid #ccc; /* Ajoute une bordure */
+  border-radius: 20px; /* Arrondit les coins */
+  background-color: transparent; /* Fond transparent */
+  padding: 5px 10px; /* Ajoute un peu d'espacement intérieur */
+  margin-left: 5px; /* Ajoute une marge à gauche pour l'espacement */
 }

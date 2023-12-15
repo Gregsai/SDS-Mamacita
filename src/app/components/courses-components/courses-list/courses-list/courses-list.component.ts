@@ -21,6 +21,9 @@ export class CoursesListComponent implements OnInit {
   isDropdownOpen: boolean = false;
   las$: Observable<any[]> | undefined;
   showAddLaPopup: boolean = false;
+  showCreateLaInput: boolean = false;
+  showLaSuccess: string = '';
+  laName = '';
 
   constructor(
     private coursesService: CoursesService,
@@ -147,10 +150,33 @@ export class CoursesListComponent implements OnInit {
     this.learningagreementService.addToLa(laId, courseId).then(() => {
       this.toggleFavorite(courseId);
       this.closeAllDropdowns();
+      this.showLaSuccess = "Course added successfully to the LA"
       this.showAddLaPopup = true;
       setTimeout(() => {
         this.showAddLaPopup = false;
+        this.showLaSuccess = ""
       }, 2000);
     });
+  }
+
+  toggleCreateLaInput(): void {
+    this.showCreateLaInput = !this.showCreateLaInput;
+    if (!this.showCreateLaInput) {
+      this.laName = '';
+    }
+  }
+
+  createLaDocument(): void {
+    if (this.laName.trim() !== '') {
+      this.learningagreementService.createLaDocument(this.laName).then(() => {
+        this.showCreateLaInput = false;
+        this.showLaSuccess = `Successfully created LA ${this.laName}`
+        this.showAddLaPopup = true;
+        setTimeout(() => {
+          this.showAddLaPopup = false;
+          this.showLaSuccess = ""
+        }, 2000);
+      })
+    }
   }
 }
