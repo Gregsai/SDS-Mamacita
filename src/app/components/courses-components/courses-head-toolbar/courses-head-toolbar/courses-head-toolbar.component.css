@@ -2,7 +2,7 @@
 div{
     padding: 5px 0 5px 9px;
     display: flex;
-    justify-content:end;
+    justify-content: space-between;
     align-items: center;
 }
 
