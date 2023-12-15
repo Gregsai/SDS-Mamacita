@@ -148,7 +148,9 @@ export class CoursesListComponent implements OnInit {
   addToLa(laId: string, courseId : string): void {
     console.log(`adding course ${courseId} to la ${laId}`);
     this.learningagreementService.addToLa(laId, courseId).then(() => {
-      this.toggleFavorite(courseId);
+      if (!this.isCourseFavorited(courseId)) {
+        this.toggleFavorite(courseId);
+      }
       this.closeAllDropdowns();
       this.showLaSuccess = "Course added successfully to the LA"
       this.showAddLaPopup = true;
