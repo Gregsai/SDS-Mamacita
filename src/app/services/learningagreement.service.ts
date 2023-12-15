@@ -162,7 +162,7 @@ export class LearningagreementService {
     try {
       const userLaCourseRef = collection(this.firestore, 'Lalisttest', userId, 'LearningAgreements', this.currentLaId, 'courses');
       const courseDocRef = doc(userLaCourseRef, courseId);
-      
+
       await setDoc(courseDocRef, {
         user_id: userId,
         course_id: courseId
@@ -192,7 +192,7 @@ export class LearningagreementService {
     try {
       const userLaCourseRef = collection(this.firestore, 'Lalisttest', userId, 'LearningAgreements', this.currentLaId, 'courses');
       const courseDocRef = doc(userLaCourseRef, courseId);
-      
+
       await deleteDoc(courseDocRef);
       this.updateLa();
       console.log('La Course document successfully deleted');
@@ -204,26 +204,26 @@ export class LearningagreementService {
 
   async createLaDocument(LaName: string): Promise<void> {
     const userId = this.userService.getUserId();
-  
+
     if (!userId) {
       console.error('User ID is null or undefined');
       // Handle the error or return early
       return;
     }
-  
+
     try {
       const userLaRef = collection(this.firestore, 'Lalisttest', userId, 'LearningAgreements');
-      
+
       // Use addDoc instead of setDoc
       const courseDocRef = await addDoc(userLaRef, {
         user_id: userId,
         la_id: '', // leave it empty for now
         name: LaName,
       });
-  
+
       // Set the la_id field with the document ID
       await updateDoc(courseDocRef, { la_id: courseDocRef.id });
-  
+
       this.updateLa();
       console.log('La document successfully created with ID:', courseDocRef.id);
     } catch (error) {
@@ -256,7 +256,35 @@ export class LearningagreementService {
       throw error;
     }
   }
-  
-  
+
+  async addToLa(laId: string, courseId : string): Promise<void> {
+    const userId = this.userService.getUserId();
+
+    if (!userId) {
+      console.error('User ID is null or undefined');
+      // Handle the error or return early
+      return;
+    }
+    if (!laId) {
+      console.error('laId is null or undefined');
+      // Handle the error or return early
+      return;
+    }
+
+    try {
+      const userLaCourseRef = collection(this.firestore, 'Lalisttest', userId, 'LearningAgreements', laId, 'courses');
+      const courseDocRef = doc(userLaCourseRef, courseId);
+
+      await setDoc(courseDocRef, {
+        user_id: userId,
+        course_id: courseId
+      });
+      this.updateLa();
+      console.log('La Course document successfully created');
+    } catch (error) {
+      console.error('Error occured whil creating La Course document', error);
+      throw error;
+    }
+  }
 
 }
