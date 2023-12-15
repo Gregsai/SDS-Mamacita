@@ -1,4 +1,4 @@
-# Erasmus + SDS Mamacita
+# Erasmus+ SDS Mamacita
 
 SDS Mamacita is a project aimed at assisting Erasmus students studying at Poznań University of Technology by providing them with a list of available courses, the credits allocated for each course, enabling them to create a learning agreement through the website, and offering many other features that allow the user to choose their courses with all the information they need.
 
