@@ -132,10 +132,15 @@
   background: #555;
 }
 
-#action-buttons{
+.buttons-container{
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+td.action {
+  vertical-align:middle;
 }
 
 .addToLa-success{
