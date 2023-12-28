@@ -15,7 +15,7 @@
       <tr *ngFor="let course of courses$ | async">
         <td class="course-name">
           <input type="checkbox" [(ngModel)]="course.selected" />
-          <a href="{{ course.link }}">{{ course.name }}</a>
+          <a [routerLink]="['/courses', course.id]">{{ course.name }}</a>
         </td>
         <td>{{ course.code }}</td>
         <td>{{ course.faculty }}</td>

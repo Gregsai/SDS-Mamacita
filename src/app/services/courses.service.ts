@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable ,take} from 'rxjs';
-import { DocumentReference, Firestore, addDoc, collection, collectionData, deleteDoc, doc, query, where } from '@angular/fire/firestore';
+import { DocumentReference, Firestore, addDoc, collection, collectionData, deleteDoc, doc, query, where, DocumentSnapshot, getDoc } from '@angular/fire/firestore';
 import { FavoritesService } from './favorites.service';
 
 @Injectable({
@@ -34,6 +34,20 @@ export class CoursesService {
     const docRef = doc(this.firestore, 'courses/' + id);
     return deleteDoc(docRef);
   }
+
+  getCourseById(id: string): Observable<any> {
+    const docRef = doc(this.firestore, 'courses/' + id);
+    return new Observable<any>((observer) => {
+      getDoc(docRef).then((snapshot: DocumentSnapshot<any>) => {
+        const courseData = snapshot.data();
+        observer.next(courseData);
+        observer.complete();
+      }).catch((error) => {
+        observer.error(error);
+      });
+    });
+  }
+
   updateCoursesWithFilters(filters: any): void {
     let queryRef = collection(this.firestore, 'courses') as any;
 
