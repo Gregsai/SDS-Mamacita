@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData, doc, query, setDoc, getDoc, deleteDoc, getDocs, DocumentData, where, addDoc, updateDoc } from '@angular/fire/firestore';
-import { BehaviorSubject, Observable, of, from } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of, from, forkJoin, EMPTY, throwError } from 'rxjs';
+import { switchMap, catchError, mergeMap, toArray } from 'rxjs/operators';
 import { UserService } from './user.service';
 
 @Injectable({
@@ -99,21 +99,21 @@ export class LearningagreementService {
     });
   }
 
-  getlearningAgreementCourses(): Observable<any[]> {
+  getlearningAgreementCourses(laId: string | null): Observable<any[]> {
     const userId = this.userService.getUserId();
 
-    if (!userId) {
-      console.error('Could not find any user ids');
+    if (!userId || laId === null || laId === undefined) {
+      console.error('Invalid user ID or Learning Agreement ID');
       return of([]);
     }
 
-    const collectionName = `Lalisttest/${userId}/LearningAgreements/${this.currentLaId}/courses`;
+    const collectionName = `Lalisttest/${userId}/LearningAgreements/${laId}/courses`;
 
     return this.getCollectionData(collectionName);
   }
 
   updateLaCourses(): void {
-    this.getlearningAgreementCourses().subscribe(LearningAgreementCourses => {
+    this.getlearningAgreementCourses(this.currentLaId).subscribe(LearningAgreementCourses => {
       this.lacoursesSubject.next(LearningAgreementCourses);
 
       this.updateLaCoursesList();
@@ -145,7 +145,7 @@ export class LearningagreementService {
     return collectionData(collection(this.firestore, collectionName), { idField: 'id' });
   }
 
-  async createLaCourseDocument(courseId: string): Promise<void> {
+  async createLaCourseDocument(laId: string, courseId: string): Promise<void> {
     const userId = this.userService.getUserId();
 
     if (!userId) {
@@ -153,14 +153,14 @@ export class LearningagreementService {
       // Handle the error or return early
       return;
     }
-    if (!this.currentLaId) {
+    if (!laId) {
       console.error('User ID is null or undefined');
       // Handle the error or return early
       return;
     }
 
     try {
-      const userLaCourseRef = collection(this.firestore, 'Lalisttest', userId, 'LearningAgreements', this.currentLaId, 'courses');
+      const userLaCourseRef = collection(this.firestore, 'Lalisttest', userId, 'LearningAgreements', laId, 'courses');
       const courseDocRef = doc(userLaCourseRef, courseId);
 
       await setDoc(courseDocRef, {
@@ -202,13 +202,13 @@ export class LearningagreementService {
     }
   }
 
-  async createLaDocument(LaName: string): Promise<void> {
+  async createLaDocument(LaName: string): Promise<string | null> {
     const userId = this.userService.getUserId();
 
     if (!userId) {
       console.error('User ID is null or undefined');
       // Handle the error or return early
-      return;
+      return null;
     }
 
     try {
@@ -221,16 +221,21 @@ export class LearningagreementService {
         name: LaName,
       });
 
+      const laId = courseDocRef.id;
+
       // Set the la_id field with the document ID
-      await updateDoc(courseDocRef, { la_id: courseDocRef.id });
+      await updateDoc(courseDocRef, { la_id: laId });
 
       this.updateLa();
-      console.log('La document successfully created with ID:', courseDocRef.id);
+      console.log('La document successfully created with ID:', laId);
+
+      return laId;
     } catch (error) {
       console.error('Error occurred while creating La document', error);
       throw error;
     }
   }
+
 
   async removeLaDocument(laId: string): Promise<void> {
     const userId = this.userService.getUserId();
@@ -248,7 +253,7 @@ export class LearningagreementService {
       await deleteDoc(laDocRef);
       console.log('Learning Agreement document successfully removed');
 
-      if (this.currentLaId==laId) {
+      if (this.currentLaId == laId) {
         this.currentLaId = null;
       }
     } catch (error) {
@@ -257,7 +262,7 @@ export class LearningagreementService {
     }
   }
 
-  async addToLa(laId: string, courseId : string): Promise<void> {
+  async addToLa(laId: string, courseId: string): Promise<void> {
     const userId = this.userService.getUserId();
 
     if (!userId) {
@@ -286,5 +291,70 @@ export class LearningagreementService {
       throw error;
     }
   }
+
+  duplicateLa(originalLaId: string): void {
+    const userId = this.userService.getUserId();
+
+    if (!userId || !originalLaId) {
+      console.error('User ID or originalLaId is null or undefined');
+      // Handle the error or return early
+      return;
+    }
+
+    let newLaId: string | null = null; // Use non-null assertion
+
+    // Step 1: Get the original Learning Agreement data
+    this.getDocument(`Lalisttest/${userId}/LearningAgreements`, originalLaId).pipe(
+      switchMap((originalLaData) => {
+        if (!originalLaData) {
+          console.error('Original Learning Agreement not found');
+          return EMPTY;
+          // or throwError('Original Learning Agreement not found');
+        }
+
+        // Step 2: Create a new Learning Agreement document
+        return this.createLaDocument(`Duplicate of ${originalLaData['name']}`);
+      }),
+      switchMap((createdLaId) => {
+        if (createdLaId === null) {
+          console.error('Created Learning Agreement ID is null');
+          return EMPTY;
+          // or throwError('Created Learning Agreement ID is null');
+        }
+
+        newLaId = createdLaId as string; // Type assertion
+
+        // Step 3: Get the courses from the original Learning Agreement
+        return this.getlearningAgreementCourses(originalLaId);
+      }),
+      catchError((error) => {
+        console.error('Error getting original courses:', error);
+        return throwError(error);
+      })
+    ).subscribe(
+      (originalLaCourses) => {
+        console.log('Original Learning Agreement Courses:', originalLaCourses);
+
+        // Step 4: Duplicate each course to the new Learning Agreement
+        const duplicateCoursePromises: Observable<void>[] = (originalLaCourses || []).map((course: any) => {
+          return from(this.createLaCourseDocument(newLaId!, course.course_id));
+        });
+
+        // Step 5: Wait for all courses to be duplicated
+        forkJoin(duplicateCoursePromises).subscribe(
+          () => {
+            console.log('Learning Agreement duplicated successfully');
+          },
+          (error) => {
+            console.error('Error duplicating courses:', error);
+          }
+        );
+      },
+      (error) => {
+        console.error('Error getting original courses:', error);
+      }
+    );
+  }
+
 
 }
