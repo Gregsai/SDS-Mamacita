@@ -1,9 +1,8 @@
-<div *ngIf="courseDetails">
-  <h3>Course Name: {{ courseDetails.name }}</h3>
-  <p>Code: {{ courseDetails.code }}</p>
-  <p>Faculty: {{ courseDetails.faculty }}</p>
-  <p>ECTS: {{ courseDetails.ects }}</p>
-  <p>Semester: {{ courseDetails.semester }}</p>
-  <p>Language: {{ courseDetails.language }}</p>
-  <p>Course card: <a href="{{ courseDetails.link }}">Click here</a></p>
+<div id="course-details-container">
+  <div id="course-details-left-toolbar">
+    <app-course-details-left-toolbar> </app-course-details-left-toolbar>
+  </div>
+  <div id="course-details-comments">
+
+  </div>
 </div>

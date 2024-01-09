@@ -28,7 +28,9 @@ import { CoursesService } from './services/courses.service';
 import { UserComponent } from './components/user/user.component';
 import { LaListMenuComponent } from './components/createla/la-list-menu/la-list-menu.component';
 import { LaMainInterfaceComponent } from './components/createla/la-main-interface/la-main-interface.component';
-import { CourseDetailsComponent } from './course-details/course-details.component'; // Assurez-vous d'importer le service correctement
+import { CourseDetailsComponent } from './course-details/course-details.component';
+import { CourseDetailsLeftToolbarComponent } from './course-details-left-toolbar/course-details-left-toolbar.component';
+import { CourseDetailsCommentsComponent } from './course-details-comments/course-details-comments.component'; // Assurez-vous d'importer le service correctement
 
 @NgModule({
   declarations: [
@@ -71,6 +73,8 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
     LaListMenuComponent,
     LaMainInterfaceComponent,
     CourseDetailsComponent,
+    CourseDetailsLeftToolbarComponent,
+    CourseDetailsCommentsComponent,
   ],
   imports: [
     BrowserModule,

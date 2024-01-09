@@ -9,7 +9,7 @@ import { CoursesService } from '../services/courses.service';
 })
 export class CourseDetailsComponent implements OnInit {
   courseId: string | null = null;
-  courseDetails: any | null = null; // Variable pour stocker les détails du cours
+  courseDetails: any | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,7 +20,7 @@ export class CourseDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.courseId = params.get('id');
       if (this.courseId) {
-        this.fetchCourseDetails(this.courseId); // Appel de la méthode pour obtenir les détails du cours
+        this.fetchCourseDetails(this.courseId);
       }
     });
   }
@@ -28,7 +28,7 @@ export class CourseDetailsComponent implements OnInit {
   fetchCourseDetails(courseId: string): void {
     this.coursesService.getCourseById(courseId).subscribe(
       (courseData: any) => {
-        this.courseDetails = courseData; // Stocker les détails du cours dans la variable
+        this.courseDetails = courseData;
       },
       (error) => {
         console.error('Error fetching course details:', error);
