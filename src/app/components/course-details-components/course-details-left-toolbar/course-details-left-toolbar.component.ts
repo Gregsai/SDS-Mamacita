@@ -1,9 +1,9 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CoursesService } from '../services/courses.service';
-import { FavoritesService } from '../services/favorites.service';
-import { LearningagreementService } from '../services/learningagreement.service';
-import { UserService } from '../services/user.service';
+import { CoursesService } from '../../../services/courses.service';
+import { FavoritesService } from '../../../services/favorites.service';
+import { LearningagreementService } from '../../../services/learningagreement.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-course-details-left-toolbar',
