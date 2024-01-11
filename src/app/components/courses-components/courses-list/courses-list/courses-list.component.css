@@ -132,10 +132,15 @@
   background: #555;
 }
 
-#action-buttons{
+.buttons-container{
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+td.action {
+  vertical-align:middle;
 }
 
 .addToLa-success{
@@ -163,17 +168,17 @@
 
 .create-la-input input {
   width: 90%;
-  border: 1px solid #ccc; /* Ajoute une bordure */
-  border-radius: 20px; /* Arrondit les coins */
-  background-color: transparent; /* Fond transparent */
-  padding: 5px; /* Ajoute un peu d'espacement intérieur */
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: transparent;
+  padding: 5px;
 }
 
 .create-la-input button {
   width: min-content;
-  border: 1px solid #ccc; /* Ajoute une bordure */
-  border-radius: 20px; /* Arrondit les coins */
-  background-color: transparent; /* Fond transparent */
-  padding: 5px 10px; /* Ajoute un peu d'espacement intérieur */
-  margin-left: 5px; /* Ajoute une marge à gauche pour l'espacement */
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: transparent;
+  padding: 5px 10px;
+  margin-left: 5px;
 }

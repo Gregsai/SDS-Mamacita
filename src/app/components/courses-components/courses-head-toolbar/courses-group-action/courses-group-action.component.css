@@ -2,12 +2,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 }
 #group-action > *{
     padding-inline: 10px;
 }
 
+.form-check{
+  display: flex;
+  align-items: center;
+}
+.form-control{
+  font-size: 16px;
+}
 .btn-primary{
     background-color: #FCA311;
     border-color: #FCA311;
+    font-size: 16px;
   }

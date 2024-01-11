@@ -1,0 +1,137 @@
+#course-details-container{
+  background-color: #14213D;
+  color: #E5E5E5;
+  border: solid 1px #E5E5E5;
+  border-radius: 20px;
+  padding: 5px;
+  width: 50vh;
+  height: 80vh;
+  font-size: 25px;
+}
+#course-details-container h3 {
+  font-size: 35px;
+  text-align: center;
+}
+
+.buttons-container button {
+  background-color: #E5E5E5;
+  border: solid 1px #E5E5E5;
+  border-radius: 20px;
+  height: 5vh;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.buttons-container button:hover {
+  background-color: #FCA311;
+  border: solid 1px #FCA311;
+  color: #E5E5E5;
+}
+
+.buttons-container{
+  padding-block: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+
+
+.addToLa-success{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  border: 1px solid #14213d;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.addToLa-success.active{
+  opacity: 1;
+  visibility: visible;
+}
+
+.create-la-input{
+  display: flex;
+  flex-direction: row;
+}
+.create-la-input input {
+  width: 90%;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: transparent;
+  padding: 5px;
+}
+.create-la-input button {
+  width: min-content;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: transparent;
+  padding: 5px 10px;
+  margin-left: 5px;
+}
+
+
+.dropdown {
+  position:static;
+  display: inline-block;
+}
+
+.dropdown-content {
+  padding-block: 5px;
+  padding-inline: 2px;
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  width: 130px;
+  max-height: 300px;
+  left:40vh;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  overflow-y: auto;
+  border: solid 1px #14213d;
+  border-radius: 20px;
+  font-size: 15px;
+
+}
+
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show .dropdown-content {
+  display: block;
+  position: absolute !important;
+}
+.dropdown-content.show {
+  display: block;
+}
+.dropdown-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown-content::-webkit-scrollbar-track {
+  background:transparent;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb {
+  background: #888;
+  border: solid 1px #14213d;
+  border-radius: 30px;
+}
+
+.dropdown-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

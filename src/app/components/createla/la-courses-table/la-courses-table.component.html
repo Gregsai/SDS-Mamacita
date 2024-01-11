@@ -11,10 +11,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr></tr>
         <tr *ngFor="let course of lacourseslist$ | async">
           <td class="course-name">
-            <a href="{{ course.link }}">{{ course.name }}</a>
+            <a [routerLink]="['/courses', course.id]">{{ course.name }}</a>
           </td>
           <td>{{ course.ects }}</td>
           <td>{{ course.semester }}</td>
@@ -24,6 +23,12 @@
               <img src="./../../assets/images/arrow.png" alt="arrow-down">
             </button>
           </td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            Total courses: {{ (lacourseslist$ | async)?.length }}
+            <br>
+            Total ECTS: {{ getTotalEcts() }}</td>
         </tr>
       </tbody>
     </table>

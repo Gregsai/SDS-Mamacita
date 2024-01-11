@@ -1,9 +1,10 @@
 #root-courses{
     display: flex;
-    padding-inline: 30px;
+    padding-left: 30px;
+    padding-right: 80px;
     height: 100%;
     background-color: #E5E5E5;
-
+    font-size: 16px;
 }
 #right-part{
     width: 100%;

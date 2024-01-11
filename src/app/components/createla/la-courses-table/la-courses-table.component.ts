@@ -41,4 +41,11 @@ export class LaCoursesTableComponent {
   removeLaCourseDocument(courseId: string) {
     this.learningagreementService.removeLaCourseDocument(courseId);
   }
+  getTotalEcts(): number {
+    let totalEcts = 0;
+    this.lacourseslist$?.subscribe(courses => {
+      totalEcts = courses.reduce((total, course) => total + course.ects, 0);
+    });
+    return totalEcts;
+  }
 }
