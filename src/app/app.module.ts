@@ -28,6 +28,9 @@ import { CoursesService } from './services/courses.service';
 import { UserComponent } from './components/user/user.component';
 import { LaListMenuComponent } from './components/createla/la-list-menu/la-list-menu.component';
 import { LaMainInterfaceComponent } from './components/createla/la-main-interface/la-main-interface.component';
+
+
+
 import { CulturalRessourcesComponent } from './components/cultural-ressources/cultural-ressources.component'; // Assurez-vous d'importer le service correctement
 
 @NgModule({
@@ -70,6 +73,9 @@ import { CulturalRessourcesComponent } from './components/cultural-ressources/cu
     UserComponent,
     LaListMenuComponent,
     LaMainInterfaceComponent,
+
+
+    
     CulturalRessourcesComponent,
   ],
   imports: [
