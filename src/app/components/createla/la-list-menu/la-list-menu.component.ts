@@ -60,4 +60,8 @@ export class LaListMenuComponent {
         console.error('Error while removing Learning Agreement document', error);
       });
   }
+
+  duplicateLa(laId: string): void {
+    this.learningagreementService.duplicateLa(laId);
+  }
 }

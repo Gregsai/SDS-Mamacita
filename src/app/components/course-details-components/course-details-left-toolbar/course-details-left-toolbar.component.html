@@ -1,0 +1,42 @@
+<div id = "course-details-container" *ngIf="courseDetails">
+  <h3>{{ courseDetails.name }}</h3>
+  <div class="buttons-container">
+    <button id="favorite-icon" class="btn" (click)="toggleFavorite()">
+      <img [src]="isCourseFavorited() ? './../../assets/images/full-heart-official.png' : './../../assets/images/heart-official.png'" alt="heart" width="15px">
+      {{ isCourseFavorited() ? 'Remove from favorites' : 'Add to favorites' }}
+    </button>
+
+    <div class="dropdown" [class.show]="showDropDown">
+      <button (click)="toggleDropdown()" id="add-to-icon" class="btn">
+        Add To LA
+      </button>
+      <div *ngIf="showDropDown" class="dropdown-content">
+        <div>
+          <div *ngIf="!showCreateLaInput">
+            <a (click)="toggleCreateLaInput();$event.stopPropagation()">Create LA</a>
+          </div>
+          <div *ngIf="showCreateLaInput" class="create-la-input">
+            <input type="text" placeholder="Enter LA Name" [(ngModel)]="laName"
+                   (click)="$event.stopPropagation()"
+                   (keyup.enter)="createLaDocument()" />
+            <button (click)="createLaDocument()">
+              <img src="./../../assets/images/check.png" alt="trash" width="15px">
+            </button>
+          </div>
+          <a *ngFor="let la of las$ | async" (click)="addToLa(la.id)">
+            {{ la.name }}
+          </a>
+        </div>
+      </div>
+      <div class="addToLa-success alert alert-success" [ngClass]="{ active: showAddLaPopup }">
+        {{ showLaSuccess }}
+      </div>
+    </div>
+  </div>
+  <p><strong>Code : </strong> {{ courseDetails.code }}</p>
+  <p><strong>Faculty : </strong> {{ courseDetails.faculty }}</p>
+  <p><strong>ECTS : </strong> {{ courseDetails.ects }}</p>
+  <p><strong>Semester : </strong> {{ courseDetails.semester }}</p>
+  <p><strong>Language : </strong> {{ courseDetails.language }}</p>
+  <p><strong>Course card : </strong> <a href="{{ courseDetails.link }}">Click here</a></p>
+</div>
