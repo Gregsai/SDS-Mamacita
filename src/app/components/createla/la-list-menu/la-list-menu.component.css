@@ -107,3 +107,12 @@
 #la-list::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+#la-list a span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: calc(100% - 30px);
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}

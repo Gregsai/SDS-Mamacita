@@ -28,9 +28,9 @@ import { CoursesService } from './services/courses.service';
 import { UserComponent } from './components/user/user.component';
 import { LaListMenuComponent } from './components/createla/la-list-menu/la-list-menu.component';
 import { LaMainInterfaceComponent } from './components/createla/la-main-interface/la-main-interface.component';
-
-
-
+import { CourseDetailsComponent } from './components/course-details-components/course-details/course-details.component';
+import { CourseDetailsLeftToolbarComponent } from './components/course-details-components/course-details-left-toolbar/course-details-left-toolbar.component';
+import { CourseDetailsCommentsComponent } from './components/course-details-components/course-details-comments/course-details-comments.component'; // Assurez-vous d'importer le service correctement
 import { CulturalRessourcesComponent } from './components/cultural-ressources/cultural-ressources.component'; // Assurez-vous d'importer le service correctement
 
 @NgModule({
@@ -73,9 +73,9 @@ import { CulturalRessourcesComponent } from './components/cultural-ressources/cu
     UserComponent,
     LaListMenuComponent,
     LaMainInterfaceComponent,
-
-
-    
+    CourseDetailsComponent,
+    CourseDetailsLeftToolbarComponent,
+    CourseDetailsCommentsComponent,
     CulturalRessourcesComponent,
   ],
   imports: [

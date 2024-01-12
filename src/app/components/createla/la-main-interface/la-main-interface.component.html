@@ -1,152 +1,25 @@
-<div class="container mt-5">
-    <div id="form-div">
-        <form>
-            <h1 style="margin-left: 13px">
-                {{ (la$ | async)?.['name'] }}
-              </h1>
+<div id="form-div">
+  <h1 style="margin-left: 13px">
+    {{ (la$ | async)?.['name'] }}
+  </h1>
 
-
-            <!--
-            <div style="margin: 13px;" class="card">
-                <div class="card-header">
-                    Informations
-                </div>
-                <div class="card-body row">
-                    <div class="form-group col-md-6">
-                        <label for="startDate" class="form-label">Start Date:</label>
-                        <input type="date" class="form-control" id="startDate" name="startDate" required>
-                    </div>
-
-                    <div class="form-group col-md-6">
-                        <label for="endDate" class="form-label">End Date:</label>
-                        <input type="date" class="form-control" id="endDate" name="endDate" required>
-                    </div>
-                </div>
-
-                <h4 class="text-center">Student</h4>
-
-
-                <div class="card-body row">
-
-                    <div class="form-group col-md-6">
-                        <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" id="firstName" placeholder="Tober">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" placeholder="Roberto">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="gender">Gender</label>
-                        <input type="text" class="form-control" id="gender" placeholder="Male">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="nationality">Nationality</label>
-                        <input type="text" class="form-control" id="nationality" placeholder="France">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="dob">Date of Birth</label>
-                        <input type="datetime-local" class="form-control" id="dob">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="fieldOfEducation">Field of Education</label>
-                        <input type="text" class="form-control" id="fieldOfEducation"
-                            placeholder="SW Engineering">
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="studyCycle">Study Cycle</label>
-                        <input type="text" class="form-control" id="studyCycle" placeholder="EQF level 7">
-                    </div>
-
-                </div>
-
-
-                <h4 class="text-center">Sending Institution</h4>
-
-                <div class="card-body row">
-                    <div class="form-group col-md-6">
-                        <label for="sendingAddress">Address</label>
-                        <input type="text" class="form-control" id="sendingAddress" placeholder="Dunkerque">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="contactPersonSending">Contact Person</label>
-                        <input type="text" class="form-control" id="contactPersonSending"
-                            placeholder="Nico MPOL / nico.MPOL@gmail.com / +33658789632">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="countrySending">Country</label>
-                        <input type="text" class="form-control" id="countrySending" placeholder="France">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="erasmusCodeSending">Erasmus Code</label>
-                        <input type="text" class="form-control" id="erasmusCodeSending"
-                            placeholder="F DUNKERQ09">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="facultySending">Faculty/Department</label>
-                        <input type="text" class="form-control" id="facultySending" placeholder="Eilco">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="nameSending">Name</label>
-                        <input type="text" class="form-control" id="nameSending"
-                            placeholder="univ Littoral">
-                    </div>
-
-                </div>
-
-                <h4 class="text-center">Receiving Institution</h4>
-
-                <div class="card-body row">
-                    <div class="form-group col-md-6">
-                        <label for="receivingAddress">Address</label>
-                        <input type="text" class="form-control" id="receivingAddress" placeholder="Poznan">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="contactPerson">Contact Person</label>
-                        <input type="text" class="form-control" id="contactPerson"
-                            placeholder="Adam Dizj / adam.dizj@gmail.com">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="countryReceiving">Country</label>
-                        <input type="text" class="form-control" id="countryReceiving" placeholder="Poland">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="erasmusCodeReceiving">Erasmus Code</label>
-                        <input type="text" class="form-control" id="erasmusCodeReceiving"
-                            placeholder="PL POZNAN02">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="facultyReceiving">Faculty/Department</label>
-                        <input type="text" class="form-control" id="facultyReceiving" placeholder="/">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="nameReceiving">Name</label>
-                        <input type="text" class="form-control" id="nameReceiving"
-                            placeholder="Politechnika">
-                    </div>
-
-                </div>
-
-            </div>-->
-
-            <div style="margin: 13px;" class="card">
-                <div class="card-header">
-                    <b>Selected courses</b>
-                </div>
-                <div class="card-body">
-                    <app-la-courses-table></app-la-courses-table>
-                </div>
-            </div>
-
-            <div style="margin: 13px;" class="card">
-                <div class="card-header">
-                    <b>Favourite courses</b>
-                </div>
-                <div class="card-body">
-                    <app-la-favorites-table></app-la-favorites-table>
-                </div>
-            </div>
-
-        </form>
+  <div id="main-interface-courses">
+    <div style="margin: 13px" class="card">
+      <div class="card-header">
+        <b>Selected courses</b>
+      </div>
+      <div class="card-body">
+        <app-la-courses-table></app-la-courses-table>
+      </div>
     </div>
+
+    <div style="margin: 13px" class="card">
+      <div class="card-header">
+        <b>Favourite courses</b>
+      </div>
+      <div class="card-body">
+        <app-la-favorites-table></app-la-favorites-table>
+      </div>
+    </div>
+  </div>
 </div>

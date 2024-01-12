@@ -13,7 +13,7 @@
       <tbody>
         <tr *ngFor="let course of lacourseslist$ | async">
           <td class="course-name">
-            <a href="{{ course.link }}">{{ course.name }}</a>
+            <a [routerLink]="['/courses', course.id]">{{ course.name }}</a>
           </td>
           <td>{{ course.ects }}</td>
           <td>{{ course.semester }}</td>

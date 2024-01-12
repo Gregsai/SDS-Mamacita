@@ -1,0 +1,19 @@
+#course-details-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding-left: 10px;
+}
+
+#course-details-comments{
+
+}
+
+#course-details-left-toolbar{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
