@@ -71,7 +71,15 @@ export class LaFavoritesTableComponent {
   }
 
   createLaCourseDocument(courseId: string) {
-    this.learningAgreementService.createLaCourseDocument(courseId);
+    const curLaId = this.learningAgreementService.getCurrentLaId();
+  
+    if (curLaId !== null) {
+      this.learningAgreementService.createLaCourseDocument(curLaId, courseId);
+    } else {
+      // Handle the case where getCurrentLaId returns null
+      console.error('Error: Unable to get current LA ID.');
+    }
   }
+  
 
 }
