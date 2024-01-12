@@ -13,16 +13,17 @@
     visibility: hidden;
     transition: opacity 0.5s ease-in-out;
   }
-  
+
   .popup.active {
     opacity: 1;
     visibility: visible;
   }
-  
+
 
   .btn-primary{
     background-color: #FCA311;
     border-color: #FCA311;
+    font-size: 16px;
   }
 
   #confirm-add{

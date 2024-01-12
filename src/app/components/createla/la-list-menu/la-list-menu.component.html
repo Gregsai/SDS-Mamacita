@@ -1,19 +1,35 @@
 <div class="list-group">
-  <!-- <a href="#" class="list-group-item list-group-item-action active">Dapibus ac facilisis in</a> -->
-  <a *ngFor="let la of las$ | async" (click)="chooseCurrentLa(la.id)" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-    <span>{{ la.name }}</span>
-    <button (click)="removeLa(la.id)" class="btn btn-danger" aria-label="Remove">
-      &times;
-    </button>
-  </a>
-  
-  
-  
-  
-  <button (click)="toggleInput()">Create Learning Agreement</button>
-  <div *ngIf="showInput">
-    <input type="text" placeholder="Enter Learning Agreement Name" [(ngModel)]="laName"
-      (keyup.enter)="createLaDocument()" />
-    <button (click)="createLaDocument()">Create</button>
+  <div id="create-la" class="create-la-input">
+    <div id="create-button" *ngIf="!showInput" class="create-button-container">
+      <a (click)="toggleInput()" class="create-button">Create LA</a>
+    </div>
+    <div *ngIf="showInput" class="input-button-container">
+      <input #laInput type="text" placeholder="Enter LA Name" [(ngModel)]="laName"
+             (click)="$event.stopPropagation()"
+             (keyup.enter)="createLaDocument()" />
+      <button (click)="createLaDocument()">
+        <img src="./../../assets/images/check.png" alt="trash" width="15px">
+      </button>
+      <button (click)="toggleInput()">
+        <img src="./../../assets/images/cross.png" alt="close" width="15px">
+      </button>
+    </div>
   </div>
+  <div id="la-list">
+    <a *ngFor="let la of las$ | async" (click)="chooseCurrentLa(la.id)" class="la-item list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+      <span>{{ la.name }}</span>
+      
+      <!-- New div for the buttons with Bootstrap grid classes -->
+      <div class="d-flex">
+        <button (click)="duplicateLa(la.id)" class="mr-2" > <!-- Add margin to the right -->
+          <img src="./../../assets/images/duplicate.png" alt="duplicate" style="width: 28.78px;">
+        </button>
+        
+        <button (click)="removeLa(la.id)" class="btn btn-danger" aria-label="Remove">
+          &times;
+        </button>
+      </div>
+    </a>
+  </div>
+  
 </div>

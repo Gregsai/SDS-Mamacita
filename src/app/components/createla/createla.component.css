@@ -28,7 +28,10 @@
     width:20px;
 }
 
-#left-head-toolBar{
+#left-toolBar{
+  width: 23%;
+}
+/* #left-head-toolBar{
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -50,7 +53,7 @@
 
 #right-head-toolBar >*{
     margin: 0 5px;
-}
+} */
 #main-content{
     display: flex;
     flex-direction: row;
