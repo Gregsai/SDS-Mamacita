@@ -1,36 +1,34 @@
-#comments-container{
+#comments-container {
   height: 79vh;
   display: flex;
   flex-direction: column;
 }
 
-#comments-header{
+#comments-header {
   height: 7%;
   margin-bottom: 20px;
 }
 
-#comments-view{
+#comments-view {
   height: 65vh;
   border: solid 1px;
   border-radius: 20px;
   overflow: hidden;
   padding: 20px;
-  overflow:auto;
+  overflow: auto;
 }
 
-
-
-.user-comment{
+.user-comment {
   margin-bottom: 20px;
   border: solid 1px;
   border-radius: 20px;
 
-  background-color: #14213D;
+  background-color: #14213d;
   overflow: hidden;
   color: white;
 }
 
-.user-comment-header{
+.user-comment-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,79 +37,84 @@
   border-bottom: solid 1px white;
   font-weight: bold;
 }
-.user-comment-header-left{
+.user-comment-header-left {
   margin-left: 10px;
-
 }
-.user-comment-header-right{
+.user-comment-header-right {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 15%;
+  margin-right: 30px;
+}
+.user-comment-header-right > * {
   margin-right: 10px;
 }
-
-.user-comment-content{
+.user-comment-content {
   margin: 10px;
   font-size: 15px !important;
+  word-wrap: break-word;
 }
 
-#comments-input{
+#comments-input {
   height: 15%;
   margin-top: 20px;
   border: solid 1 px;
   border-radius: 20px;
   overflow: hidden;
-  background-color: #14213D;
+  background-color: #14213d;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
 }
 
-#comment-content{
+#comment-content {
   padding: 10px;
   height: 50px;
   overflow: auto;
-  background-color: #E5E5E5;
+  background-color: #e5e5e5;
   border: solid 1 1px;
   border-radius: 100px;
-  width: 50vw;
-
+  width: 50%;
 }
 
-#comment-send > button{
-  background-color: #FCA311;
-  color: #14213D;
+#comment-send > button {
+  background-color: #fca311;
+  color: #14213d;
   border: solid 1px;
   border-radius: 20px;
   height: 40px;
-  width: 10vw;
+  width: 150px;
 }
 
-#comment-send > button:hover{
-  background-color: #14213D;
-  color: #E5E5E5;
+#comment-send > button:hover {
+  background-color: #14213d;
+  color: #e5e5e5;
   border: solid 1px;
   border-radius: 20px;
   height: 40px;
-  width: 10vw;
+  width: 150px;
 }
 
 #comments-view,
 #comment-content {
   scrollbar-width: thin;
-  scrollbar-color: #FCA311;
+  scrollbar-color: #fca311;
 
   &::-webkit-scrollbar {
     width: 12px;
   }
 
-
   &::-webkit-scrollbar-thumb {
-    background-color: #FCA311;
+    background-color: #fca311;
     border-radius: 6px;
-    border: 3px solid ;
+    border: 3px solid;
   }
+}
 
+#error-message-comment {
+  position: fixed;
+  left: 55%;
+  top: 50%;
 }
