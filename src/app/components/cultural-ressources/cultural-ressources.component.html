@@ -3,7 +3,7 @@
     <div class="row">
       <!-- Repeat this card block for each card -->
       <div *ngFor="let act of activities$ | async" class="col-lg-3 card-cont">
-        <div class="card image-card" onclick="window.location.href='your_destination_page.html';">
+        <div class="card image-card" [routerLink]="['/culturalressources', act.id]">
           <img src="{{ act.photoPath }}" class="card-img" alt="Image">
           <div class="card-text">
             <div class="text-content">
