@@ -1,7 +1,7 @@
 <div id = "course-details-container" *ngIf="courseDetails">
   <h3>{{ courseDetails.name }}</h3>
-  <div class="buttons-container">
-    <button id="favorite-icon" class="btn" (click)="toggleFavorite()">
+  <div class="buttons-container" *ngIf="isLoggedIn">
+    <button id="favorite-icon" class="btn" (click)="toggleFavorite()" >
       <img [src]="isCourseFavorited() ? './../../assets/images/full-heart-official.png' : './../../assets/images/heart-official.png'" alt="heart" width="15px">
       {{ isCourseFavorited() ? 'Remove from favorites' : 'Add to favorites' }}
     </button>
