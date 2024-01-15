@@ -9,7 +9,9 @@
 }
 
 #course-details-comments{
-
+  height: 100%;
+  width: 70%;
+  padding: 20px;
 }
 
 #course-details-left-toolbar{
