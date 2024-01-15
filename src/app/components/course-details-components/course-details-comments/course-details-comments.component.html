@@ -1,1 +1,41 @@
-<p>course-details-comments works!</p>
+<div id="comments-container">
+  <div id="comments-header">
+    <h1>Comments</h1>
+  </div>
+  <div id="comments-view">
+
+    <div *ngFor="let comment of comments" class="user-comment">
+      <div class="user-comment-header">
+        <div class="user-comment-header-left">
+          <div class="user-comment-header-left-name">
+            <p>{{ comment.authorEmail }}</p>
+          </div>
+        </div>
+        <div class="user-comment-header-right">
+          <div class="user-comment-header-right-date">
+            <p>{{ comment.date }}</p>
+          </div>
+          <div class="user-comment-header-right-time">
+            <p>{{ comment.time }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="user-comment-content">
+        <p>{{ comment.message }}</p>
+      </div>
+    </div>
+  </div>
+  <div id="comments-input">
+    <div id="comment-content" contenteditable="true" #commentContent>
+    </div>
+    <div id="comment-send">
+      <button id="send-button" (click)="addComment()">Send</button>
+    </div>
+</div>
+<div *ngIf="displayErrorMessage" class="alert alert-danger" id = "error-message-comment"role="alert">
+  {{ errorMessage }}
+</div>
+<div *ngIf="displayMessage" class="alert alert-success" id = "error-message-comment"role="alert">
+  {{ message }}
+</div>
+</div>

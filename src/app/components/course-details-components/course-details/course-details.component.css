@@ -5,10 +5,13 @@
   align-items: center;
   height: 100%;
   padding-left: 10px;
+  background-color: #E5E5E5;
 }
 
 #course-details-comments{
-
+  height: 100%;
+  width: 70%;
+  padding: 20px;
 }
 
 #course-details-left-toolbar{
