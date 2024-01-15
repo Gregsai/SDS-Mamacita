@@ -1,0 +1,21 @@
+#activity-details-container{
+    background-color: #14213D;
+    color: #E5E5E5;
+    border: solid 1px #E5E5E5;
+    border-radius: 20px;
+    padding: 5px;
+    width: 50vh;
+    height: 80vh;
+    font-size: 25px;
+  }
+  #activity-details-container h3 {
+    font-size: 35px;
+    text-align: center;
+  }
+
+  
+  
+
+  
+  
+ 
