@@ -31,6 +31,10 @@ import { LaMainInterfaceComponent } from './components/createla/la-main-interfac
 import { CourseDetailsComponent } from './components/course-details-components/course-details/course-details.component';
 import { CourseDetailsLeftToolbarComponent } from './components/course-details-components/course-details-left-toolbar/course-details-left-toolbar.component';
 import { CourseDetailsCommentsComponent } from './components/course-details-components/course-details-comments/course-details-comments.component'; // Assurez-vous d'importer le service correctement
+import { CulturalRessourcesComponent } from './components/cultural-ressources/cultural-ressources.component';
+import { CulturalRessourcesDetailsComponent } from './components/cultural-ressources/cultural-ressources-details/cultural-ressources-details.component';
+import { CulturalRessourcesDetailsLeftToolbarComponent } from './components/cultural-ressources/cultural-ressources-details/cultural-ressources-details-left-toolbar/cultural-ressources-details-left-toolbar.component';
+import { CulturalRessourcesDetailsCommentsComponent } from './components/cultural-ressources/cultural-ressources-details/cultural-ressources-details-comments/cultural-ressources-details-comments.component'; // Assurez-vous d'importer le service correctement
 
 @NgModule({
   declarations: [
@@ -75,6 +79,10 @@ import { CourseDetailsCommentsComponent } from './components/course-details-comp
     CourseDetailsComponent,
     CourseDetailsLeftToolbarComponent,
     CourseDetailsCommentsComponent,
+    CulturalRessourcesComponent,
+    CulturalRessourcesDetailsComponent,
+    CulturalRessourcesDetailsLeftToolbarComponent,
+    CulturalRessourcesDetailsCommentsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,7 @@
+<div id = "activity-details-container" *ngIf="activityDetails">
+    <h3>{{ activityDetails.name }}</h3>
+    <img src="{{ activityDetails.photoPath }}" class="card-img" alt="Image">
+    <p><strong>Address : </strong> {{ activityDetails.address }}</p>
+    <p><strong>Description : </strong> {{ activityDetails.description }}</p>
+  </div>
+  

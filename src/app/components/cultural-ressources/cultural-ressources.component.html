@@ -1,0 +1,17 @@
+<div id="root-culturalressources">
+  <div class="container" style="max-width: 1550px">
+    <div class="row">
+      <!-- Repeat this card block for each card -->
+      <div *ngFor="let act of activities$ | async" class="col-lg-3 card-cont">
+        <div class="card image-card" [routerLink]="['/culturalressources', act.id]">
+          <img src="{{ act.photoPath }}" class="card-img" alt="Image">
+          <div class="card-text">
+            <div class="text-content">
+              <p>{{ act.name }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Repeat this card block for each card -->
+    </div>
+  </div>
