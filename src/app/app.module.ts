@@ -34,7 +34,9 @@ import { CourseDetailsCommentsComponent } from './components/course-details-comp
 import { CulturalRessourcesComponent } from './components/cultural-ressources/cultural-ressources.component';
 import { CulturalRessourcesDetailsComponent } from './components/cultural-ressources/cultural-ressources-details/cultural-ressources-details.component';
 import { CulturalRessourcesDetailsLeftToolbarComponent } from './components/cultural-ressources/cultural-ressources-details/cultural-ressources-details-left-toolbar/cultural-ressources-details-left-toolbar.component';
-import { CulturalRessourcesDetailsCommentsComponent } from './components/cultural-ressources/cultural-ressources-details/cultural-ressources-details-comments/cultural-ressources-details-comments.component'; // Assurez-vous d'importer le service correctement
+import { CulturalRessourcesDetailsCommentsComponent } from './components/cultural-ressources/cultural-ressources-details/cultural-ressources-details-comments/cultural-ressources-details-comments.component';
+import { CulturalRessourcesMainContentComponent } from './components/cultural-ressources/cultural-ressources-main-content/cultural-ressources-main-content.component';
+import { CulturalRessourcesHeadToolbarComponent } from './components/cultural-ressources/cultural-ressources-head-toolbar/cultural-ressources-head-toolbar.component'; // Assurez-vous d'importer le service correctement
 
 @NgModule({
   declarations: [
@@ -83,6 +85,8 @@ import { CulturalRessourcesDetailsCommentsComponent } from './components/cultura
     CulturalRessourcesDetailsComponent,
     CulturalRessourcesDetailsLeftToolbarComponent,
     CulturalRessourcesDetailsCommentsComponent,
+    CulturalRessourcesMainContentComponent,
+    CulturalRessourcesHeadToolbarComponent,
   ],
   imports: [
     BrowserModule,

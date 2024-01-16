@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, collectionData, doc, query, setDoc, getDoc, deleteDoc, getDocs, DocumentData, where, addDoc, updateDoc } from '@angular/fire/firestore';
+import { DocumentReference, Firestore, collection, collectionData, doc, query, setDoc, getDoc, deleteDoc, getDocs, DocumentData, where, addDoc, updateDoc } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable, of, from, forkJoin, EMPTY, throwError } from 'rxjs';
 import { switchMap, catchError, mergeMap, toArray } from 'rxjs/operators';
 
@@ -53,5 +53,9 @@ export class CulturalressourcesService {
         }
       })
     );
+  }
+
+  addActivity(data: object): Promise<DocumentReference<object>> {
+    return addDoc(collection(this.firestore, 'activities'), data);
   }
 }
