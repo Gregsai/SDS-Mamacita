@@ -68,6 +68,7 @@ header{
 
 main{
     flex: 1;
+    background-color: #E5E5E5;
 }
 footer {
     text-align: center;
